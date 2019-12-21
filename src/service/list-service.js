@@ -5,8 +5,8 @@ const _mm = new MUtil();
 
 class ListService{
   fetchClubList(clubinfo){
-    return _mm.rejson({
-      type: 'post',
+    return _mm.request({
+      type: 'get',
       url: `${urlPrefix}/shetuan_officalWebsite/organizationTopic/list`,
       data:clubinfo,
     })

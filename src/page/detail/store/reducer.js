@@ -14,24 +14,37 @@ const defualtState = fromJS({
   },
   activityData:{
     relatedPeople: [],
+    images:[],
+    audio:[],
+    video:[]
   },
   literatureData : {
     relatedPeople: [],
+    images:[],
   },
   historyIndexData : {
-
+    images:[],
   },
   realObjectData : {
-
+    realObjectDetail: {
+      relatedPeople: [],
+      images:[],
+    }
   },
   peopleData : {
 
   },
   journalData : {
-
+    relatedPeople: [],
+    images:[],
+  },
+  imageData: {
+    relatedPeople: [],
+  },
+  videoData : {
+    relatedPeople: [],
   },
   isdataLoading: true,
-
 })
 
 export default ( state=defualtState , action )=>{
@@ -51,6 +64,10 @@ export default ( state=defualtState , action )=>{
         return state.set('peopleData',payload);
     case constants.ACTION_SET_JOURNAL_DETAIL:
       return state.set('journalData',payload);
+    case constants.ACTION_SET_IMAGE_DETAIL:
+        return state.set('imageData',payload);
+    case constants.ACTION_SET_VIDEO_DETAIL:
+      return state.set('videoData',payload);
     case constants.ACTION_SET_DETAIL_LOADING:
         return state.set('isdataLoading',payload);
     default:

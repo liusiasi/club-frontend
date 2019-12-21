@@ -14,7 +14,11 @@ import {
   ORGANIZATION_TOPIC,
   ACTIVITY_TOPIC,
   LITERATURE_TOPIC,
-  HISTORICALINDEX_TOPIC
+  HISTORICALINDEX_TOPIC,
+  JOURNAL_TOPIC,
+  IMAGE_TOPIC,
+  VIDEO_TOPIC,
+  PEOPLE_TOPIC
 } from 'util/constants'
 import moment from 'moment'
 const FormItem = Form.Item;
@@ -223,11 +227,172 @@ const HistoricalSearch = memo(function Search(props) {
   )
 })
 
+const JournalSearch = memo(function Search(props) {
+  const { handleFormReset, name, startTime,endTime,  organizationName, onSearch, FormReset } = props;
+  const { getFieldDecorator } = props.form;
+  useEffect(() => {
+    return () => {
+      FormReset();
+    }
+  }, [])
+  return (
+    <div>
+      <Form onSubmit={onSearch} layout="inline">
+        <FormItem label="期刊名称">
+          {getFieldDecorator('name', {
+            initialValue: name
+          })(
+            <Input placeholder="请输入期刊名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <FormItem label="社团名称">
+          {getFieldDecorator('organizationName', {
+            initialValue: organizationName
+          })(
+            <Input placeholder="请输入相关社团名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <FormItem label="创刊日期">
+          {getFieldDecorator('time', {
+            initialValue:  [startTime?moment(startTime):undefined,endTime?moment(endTime):undefined]
+          })(
+            <RangePicker placeholder={["开始日期", "结束日期"]} style={{ width: 220 }} />
+          )}
+        </FormItem>
+        <span>
+          <Button type="primary" htmlType="submit">搜索</Button>
+          <Button style={{ marginLeft: 8 }} onClick={handleFormReset}>重置</Button>
+        </span>
+      </Form>
+    </div>
+  )
+})
+
+const ImageSearch = memo(function Search(props) {
+  const { handleFormReset, name, peopleName, organizationName, onSearch, FormReset } = props;
+  const { getFieldDecorator } = props.form;
+  useEffect(() => {
+    return () => {
+      FormReset();
+    }
+  }, [])
+  return (
+    <div>
+      <Form onSubmit={onSearch} layout="inline">
+        <FormItem label="图片名称">
+          {getFieldDecorator('name', {
+            initialValue: name
+          })(
+            <Input placeholder="请输入图片名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <FormItem label="社团名称">
+          {getFieldDecorator('organizationName', {
+            initialValue: organizationName
+          })(
+            <Input placeholder="请输入相关社团名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <FormItem label="人物名称">
+          {getFieldDecorator('peopleName', {
+            initialValue: peopleName
+          })(
+            <Input placeholder="请输入相关人物名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <span>
+          <Button type="primary" htmlType="submit">搜索</Button>
+          <Button style={{ marginLeft: 8 }} onClick={handleFormReset}>重置</Button>
+        </span>
+      </Form>
+    </div>
+  )
+})
+
+const VideoSearch = memo(function Search(props) {
+  const { handleFormReset, name, peopleName,  organizationName, onSearch, FormReset } = props;
+  const { getFieldDecorator } = props.form;
+  useEffect(() => {
+    return () => {
+      FormReset();
+    }
+  }, [])
+  return (
+    <div>
+      <Form onSubmit={onSearch} layout="inline">
+        <FormItem label="视频名称">
+          {getFieldDecorator('name', {
+            initialValue: name
+          })(
+            <Input placeholder="请输入视频名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <FormItem label="社团名称">
+          {getFieldDecorator('organizationName', {
+            initialValue: organizationName
+          })(
+            <Input placeholder="请输入相关社团名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <FormItem label="人物名称">
+          {getFieldDecorator('peopleName', {
+            initialValue: peopleName
+          })(
+            <Input placeholder="请输入相关人物名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <span>
+          <Button type="primary" htmlType="submit">搜索</Button>
+          <Button style={{ marginLeft: 8 }} onClick={handleFormReset}>重置</Button>
+        </span>
+      </Form>
+    </div>
+  )
+})
+
+const PeopleSearch = memo(function Search(props) {
+  const { handleFormReset, name, type, startTime,endTime,  organizationName, onSearch, FormReset } = props;
+  const { getFieldDecorator } = props.form;
+  useEffect(() => {
+    return () => {
+      FormReset();
+    }
+  }, [])
+  return (
+    <div>
+      <Form onSubmit={onSearch} layout="inline">
+        <FormItem label="人物名称">
+          {getFieldDecorator('name', {
+            initialValue: name
+          })(
+            <Input placeholder="请输入人物名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <FormItem label="社团名称">
+          {getFieldDecorator('organizationName', {
+            initialValue: organizationName
+          })(
+            <Input placeholder="请输入相关社团名称" style={{ width: 160 }} />
+          )}
+        </FormItem>
+        <span>
+          <Button type="primary" htmlType="submit">搜索</Button>
+          <Button style={{ marginLeft: 8 }} onClick={handleFormReset}>重置</Button>
+        </span>
+      </Form>
+    </div>
+  )
+})
+
 const themeSearch = {
   [ORGANIZATION_TOPIC]: OrgnizationSearch,
   [ACTIVITY_TOPIC]: ActivitySearch,
   [LITERATURE_TOPIC]: LiteratureSearch,
   [HISTORICALINDEX_TOPIC]: HistoricalSearch,
+  [JOURNAL_TOPIC]: JournalSearch,
+  [IMAGE_TOPIC]: ImageSearch,
+  [VIDEO_TOPIC]: VideoSearch,
+  [PEOPLE_TOPIC]: PeopleSearch,
 }
 
 

@@ -30,6 +30,14 @@ const changeJournalDetail = ( data ) => ({
   type: constants.ACTION_SET_JOURNAL_DETAIL,
   payload: fromJS(data),
 })
+const changeImageDetail = ( data ) => ({
+  type: constants.ACTION_SET_IMAGE_DETAIL,
+  payload: fromJS(data),
+})
+const changeVideoDetail = ( data ) => ({
+  type: constants.ACTION_SET_VIDEO_DETAIL,
+  payload: fromJS(data),
+})
 const setLoading = ( payload ) => ({
   type: constants.ACTION_SET_DETAIL_LOADING,
   payload,
@@ -132,6 +140,36 @@ export const getPeopleDetail  = (id) => {
     _detailinfo.peopledetail({id}).then(res => {
       if( res.success && res.obj != null ){
         dispatch(changePeopleDetail(res.obj));
+        dispatch(setLoading(false));
+      }
+    }, errMsg => {
+      console.log(errMsg);
+      dispatch(setLoading(false));
+    })
+  }
+}
+
+export const getImageDetail  = (id) => {
+  return (dispatch) => {
+    dispatch(setLoading(true));
+    _detailinfo.imagedetail({id}).then(res => {
+      if( res.success && res.obj != null ){
+        dispatch(changeImageDetail(res.obj));
+        dispatch(setLoading(false));
+      }
+    }, errMsg => {
+      console.log(errMsg);
+      dispatch(setLoading(false));
+    })
+  }
+}
+
+export const getVideoDetail  = (id) => {
+  return (dispatch) => {
+    dispatch(setLoading(true));
+    _detailinfo.videodetail({id}).then(res => {
+      if( res.success && res.obj != null ){
+        dispatch(changeVideoDetail(res.obj));
         dispatch(setLoading(false));
       }
     }, errMsg => {

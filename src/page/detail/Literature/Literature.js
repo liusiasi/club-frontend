@@ -4,7 +4,7 @@ import React, {
 import {
   TitleContext,
   DetailMiddle,
-} from './style.js'
+} from '../common.js'
 import { Descriptions, Tabs } from 'antd';
 import CarouselContainer from 'component/carousel-container'
 

@@ -28,7 +28,7 @@ class DetailInfo{
   realobjectdetail(param){
     return _mm.request({
       type: 'get',
-      url: `${urlPrefix}/shetuan_officalWebsite/historicalIndexTopic/historicalIndexDetailById`,
+      url: `${urlPrefix}/shetuan_officalWebsite/organizationTopic/realObjectDetailById`,
       data: param,
     })
   }
@@ -50,6 +50,20 @@ class DetailInfo{
     return _mm.request({
       type: 'get',
       url: `${urlPrefix}/shetuan_officalWebsite/peopleTopic/peopleDetailById`,
+      data: param,
+    })
+  }
+  imagedetail(param){
+    return _mm.request({
+      type: 'get',
+      url: `${urlPrefix}/shetuan_officalWebsite/imageTopic/imageDetailById`,
+      data: param,
+    })
+  }
+  videodetail(param){
+    return _mm.request({
+      type: 'get',
+      url: `${urlPrefix}/shetuan_officalWebsite/videoTopic/videoDetailById`,
       data: param,
     })
   }

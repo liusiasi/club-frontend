@@ -14,7 +14,9 @@ import {
   getRealObjectDetail,
   getJournalDetail,
   getHistorycalIndexDetail,
-  getPeopleDetail
+  getPeopleDetail,
+  getImageDetail,
+  getVideoDetail,
 } from './store/actionCreator'
 import CardActivity from 'component/card-activity';
 import OrgnizationClub from './Orgnization'
@@ -39,7 +41,8 @@ const HistoricalIndex = React.lazy(() => import(/* webpackChunkName: 'historical
 const RealObject = React.lazy(() => import(/* webpackChunkName: 'realObject' */'./RealObject/RealObject'));
 const People = React.lazy(() => import(/* webpackChunkName: 'people' */'./People/People'));
 const Journal = React.lazy(() => import(/* webpackChunkName: 'journal' */'./Journal/Journal'));
-
+const Image = React.lazy(() => import(/* webpackChunkName: 'image' */'./Image/Image'));
+const Video = React.lazy(() => import(/* webpackChunkName: 'video' */'./Video/Video'));
 
 class Detail extends Component {
   constructor(props) {
@@ -56,7 +59,10 @@ class Detail extends Component {
       getRealObjectDetail,
       getJournalDetail,
       getHistorycalIndexDetail,
-      getPeopleDetail } = this.props;
+      getPeopleDetail,
+      getImageDetail,
+      getVideoDetail
+     } = this.props;
     const { theme, id } = this.state;
     console.log(this.state);
     switch (theme) {
@@ -81,6 +87,12 @@ class Detail extends Component {
       case JOURNAL_TOPIC:
         getJournalDetail(id)
         return;
+      case IMAGE_TOPIC:
+        getImageDetail(id);
+        return;
+      case VIDEO_TOPIC:
+        getVideoDetail(id)
+        return;
       default:
         // getClubDetail(id);
         return;
@@ -96,8 +108,11 @@ class Detail extends Component {
       realObjectData,
       peopleData,
       journalData,
+      imageData,
+      videoData,
       isLoading } = this.props;
     const { theme } = this.state;
+    console.log(imageData.toJS());
     return (
       isLoading ? <Spin /> : <DetailWrapper>{
         (() => {
@@ -128,6 +143,14 @@ class Detail extends Component {
               return <React.Suspense fallback={<div>isLoading</div>}>
                       <Journal data={journalData.toJS()} />
                     </React.Suspense>; 
+            case IMAGE_TOPIC:
+              return <React.Suspense fallback={<div>isLoading</div>}>
+                      <Image data={imageData.toJS()} />
+                    </React.Suspense>;
+            case VIDEO_TOPIC:
+              return <React.Suspense fallback={<div>isLoading</div>}>
+                      <Video data={videoData.toJS()} />
+                    </React.Suspense>; 
             default:
               return <OrgnizationClub data={detailData.toJS()} />;
           }
@@ -150,6 +173,8 @@ const mapStateToProps = (state) => {
     realObjectData: state.getIn(['detail', 'realObjectData']),
     peopleData: state.getIn(['detail', 'peopleData']),
     journalData: state.getIn(['detail', 'journalData']),
+    imageData: state.getIn(['detail', 'imageData']),
+    videoData: state.getIn(['detail', 'videoData']),
   }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -160,7 +185,9 @@ const mapDispatchToProps = (dispatch) => {
     getRealObjectDetail,
     getJournalDetail,
     getHistorycalIndexDetail,
-    getPeopleDetail
+    getPeopleDetail,
+    getImageDetail,
+    getVideoDetail,
   }, dispatch)
 }
 
