@@ -32,6 +32,15 @@ const defualtState = fromJS({
     }
   },
   peopleData : {
+    organizations:[],
+    activities:[],
+    historicalDataIndexs:[],
+    journals:[], 
+    literatures:[], 
+    realObjects:[], 
+    images:[],
+    video:[],
+    audio:[],
 
   },
   journalData : {

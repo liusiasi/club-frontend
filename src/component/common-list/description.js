@@ -105,7 +105,6 @@ export const PeopleDes = (data ,current,pageSize ) => {
       name: item.get('name'),
       logoUrl: item.get('image') === null ? 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png' : item.get('image'),
       description: (<div id='Text'><Text >{'相关社团名称: ' + (organizationName?organizationName.size ? organizationName.join(',') : '暂无':'暂无')}</Text>
-        <br /><Text >{'史料日期: ' + (item.get('createTime') ? item.get('createTime') : '暂无')}</Text>
       </div>
       ),
 

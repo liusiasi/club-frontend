@@ -37,7 +37,7 @@ const CommonItem = memo(function ListItem(props) {
           <Link to={`/detail?id=${item.id}&theme=${theme}`}
             target="_blank"
           >
-            {<img src={"http://admin.swczyc.com/" + item.url} />}
+            {<img src={item.url} />}
           </Link>
           <p>{item.name}</p>
         </MetaWrapper>
@@ -46,7 +46,7 @@ const CommonItem = memo(function ListItem(props) {
         <Link to={`/detail?id=${item.id}&theme=${theme}`}
           target="_blank"
         >
-          {<video src={"http://admin.swczyc.com/" + item.url} controls="controls" />}
+          {<video src={item.url} controls="controls" />}
         </Link>
         <p>{item.name}</p>
       </MetaWrapper>

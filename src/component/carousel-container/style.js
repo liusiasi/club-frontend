@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const CarouselContainer = styled.div`
   width: 250px;
-  margin: 10px 0;
+  margin: 10px 25px 0;
   border: 1px solid #e6e6e6;
   h3 {
     font-size: 18px;

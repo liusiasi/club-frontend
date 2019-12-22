@@ -5,6 +5,7 @@ import Header from './common/header';
 import Home from './page/home/index.js';
 import Detail from 'page/detail/index.js';
 import List from 'page/list/index.js';
+import Supplement from 'page/supplement/index.js';
 import { Provider } from 'react-redux';
 import store from './store';
 
@@ -22,6 +23,7 @@ function App() {
             <Route path='/' exact component={Home}></Route>
             <Route path='/list' exact component={List}></Route>
             <Route path='/detail' exact component={Detail}></Route>
+            <Route path='/supplement' exact component={Supplement}></Route>
           </Switch>
         </Router>
       </Provider>

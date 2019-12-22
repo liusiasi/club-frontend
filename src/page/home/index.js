@@ -21,6 +21,7 @@ import {
 import {
   toggleSearch
 } from '../list/store/actionCreator';
+import { __values } from 'tslib';
 @Form.create()
 class Home extends Component {
   constructor(props) {

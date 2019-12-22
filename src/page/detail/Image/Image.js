@@ -15,7 +15,7 @@ export default memo(function Image(props) {
   return (
     <Fragment>
       <DetailMiddle>
-      <ImageContainer ><a href={url} target="_blank" ><img src={"http://admin.swczyc.com"+url}/></a><p>{name}</p></ImageContainer>
+      <ImageContainer ><a href={url} target="_blank" ><img src={url}/></a><p>{name}</p></ImageContainer>
         <Descriptions layout="horizontal" column={1} style={{ width: 500,paddingTop: 30}}>
           {people ? <Descriptions.Item label="拍摄者">{people}</Descriptions.Item> : ''}
 

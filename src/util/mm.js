@@ -66,6 +66,15 @@ class MUtil {
       return false;
     }
   }
+  isLastRule(rule, value, callback) {
+    var re = /^[1][0-9]{10}$/;
+    if (value && !re.test(value)) {
+      callback('请输入11位完整手机号！');
+    } else {
+      callback();
+    }
+  }
+
 }
 
 export default MUtil;

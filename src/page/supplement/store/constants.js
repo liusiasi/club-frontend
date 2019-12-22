@@ -1,0 +1,1 @@
+export const ACTION_SET_MESSAGE_CALL = 'supplement/HANDLE_SUPPLEMENT'
