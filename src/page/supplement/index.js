@@ -1,10 +1,10 @@
 import React, {
   memo,
-  useState
+  useState,
+  useCallback,
+  useEffect,
+  useRef
 } from 'react'
-import {
-  SupplyWrapper
-} from './style'
 import {
   Input,
   Form,
@@ -13,6 +13,7 @@ import {
   Upload,
   Icon,
   message,
+  notification
 } from 'antd'
 import MUtil from 'util/mm.js';
 import {
@@ -27,22 +28,28 @@ const _mm = new MUtil();
 const { TextArea } = Input;
 const FormItem = Form.Item;
 
-const Supplement = memo(function index(props) {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const Supplement = memo(function Supplement(props) {
   const [urlList, seturlList] = useState([]);
+  const currentSuccess = useRef(props.success);
+  const currentMsg = useRef(props.msg);
 
+
+  currentSuccess.current = props.success;
+  currentMsg.current = props.msg;
   const { getFieldDecorator } = props.form;
   const handleReturn = () => {
-
+    props.history.goBack();
   }
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     props.form.validateFields((error, values) => {
       if (!error) {
         let supplementFile = new Array();
         if (urlList.length) {
           for (var i = 0; i < urlList.length; i++) {
-            supplementFile.push(urlList[i].url);
+            supplementFile.push({
+              url: urlList[i].url
+            });
           }
         }else{
           message.error('请上传资料！');
@@ -51,11 +58,18 @@ const Supplement = memo(function index(props) {
         delete values.upload;
         values.supplementFile = supplementFile;
         props.handleSuppelemnt(values).then(()=>{
-          if(props.success){
-            console.log('提交成功');
-          }else{
-            message.error(props.msg);
-          }
+            if(currentSuccess.current){
+              const args = {
+                message: '提交成功',
+                description:
+                '您的资料已经成功提交，非常感谢',
+                duration: null,
+                onClose: () => props.history.goBack(),
+              };
+              notification.success(args);
+            }else{
+              message.error(currentMsg.current);
+            }
         })
       }
     });
@@ -84,8 +98,6 @@ const Supplement = memo(function index(props) {
   };
   const handleFiles = (info) => {
     let fileList = info.fileList;
-    console.log(fileList);
-    console.log('handleFiles');
     // 2. read from response and show file link
     fileList = fileList.map((file) => {
       if (file.response) {
@@ -120,6 +132,8 @@ const Supplement = memo(function index(props) {
     });  
 
   }
+
+
   return (
     <Card title="社团资料补充" style={{
       width: 500,
@@ -128,23 +142,16 @@ const Supplement = memo(function index(props) {
     }}>
       <Form {...formItemLayout} onSubmit={handleSubmit}>
         <FormItem label="资料名称">
-          {getFieldDecorator('name', {
+          {getFieldDecorator('supplementSummary', {
             rules: [{ required: true, message: '请输入资料名称' }],
           })
             (<Input placeholder="请输入资料名称" />)}
         </FormItem>
         <FormItem label="资料描述">
-          {getFieldDecorator('description', {
+          {getFieldDecorator('supplementDescription', {
             rules: [{ required: true, message: '请输入资料描述' }]
           })(
             <TextArea rows={4} />
-          )}
-        </FormItem>
-        <FormItem label="提交人姓名">
-          {getFieldDecorator('submitter', {
-            rules: [{ required: true, message: '请输入提交人姓名' }],
-          })(
-            <Input placeholder="请输入提交人姓名" />
           )}
         </FormItem>
         <FormItem label="资料上传">
@@ -163,8 +170,15 @@ const Supplement = memo(function index(props) {
 
           )}
         </FormItem>
+        <FormItem label="提交人姓名">
+          {getFieldDecorator('contacts', {
+            rules: [{ required: true, message: '请输入提交人姓名' }],
+          })(
+            <Input placeholder="请输入提交人姓名" />
+          )}
+        </FormItem>
         <FormItem label="提交人电话">
-          {getFieldDecorator('contactorMobile', {
+          {getFieldDecorator('contactsPhone', {
             rules: [{ required: true, message: '请输入提交人电话' }, { validator: _mm.isLastRule }],
           })(
             <Input placeholder="请输入提交人电话" />

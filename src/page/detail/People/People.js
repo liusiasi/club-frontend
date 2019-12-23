@@ -120,7 +120,7 @@ export default memo(function People(props) {
               }
             </ParaSection> : <span />}      
             {/* 相关文献 */}
-            {/* {literatures.length ? <ParaSection>
+            {literatures.length ? <ParaSection>
               <p>相关文献</p>
               {
                 literatures.map((item, index) => {
@@ -135,7 +135,7 @@ export default memo(function People(props) {
                   </ParaContext>
                 })
               }
-            </ParaSection> : <span />}         */}
+            </ParaSection> : <span />}        
           </TabPane>
           <TabPane tab="流光影年" key="影年" >
           {images.length? <CarouselContainer title={'图片'} data={images} />:<span/>}

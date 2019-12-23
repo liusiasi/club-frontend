@@ -8,7 +8,7 @@ class SupplementService{
   submitSupplement(supplementinfo){
     return _mm.rejson({
       type: 'post',
-      url: `${urlPrefix}/shetuan_officalWebsite/organizationTopic/list`,
+      url: `${urlPrefix}/shetuan_officalWebsite/fileSupplementSubmit`,
       data:supplementinfo,
     })
   }

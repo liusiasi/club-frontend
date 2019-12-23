@@ -96,8 +96,8 @@ class ListSearch extends PureComponent {
             <Radio.Button value={LITERATURE_TOPIC}>文献</Radio.Button>
             <Radio.Button value={HISTORICALINDEX_TOPIC}>史料</Radio.Button>
             <Radio.Button value={JOURNAL_TOPIC}>期刊</Radio.Button>
-            <Radio.Button value={JOURNAL_TOPIC}>视频</Radio.Button>
-            <Radio.Button value={JOURNAL_TOPIC}>图片</Radio.Button>
+            <Radio.Button value={VIDEO_TOPIC}>视频</Radio.Button>
+            <Radio.Button value={IMAGE_TOPIC}>图片</Radio.Button>
           </Radio.Group>
         </SearchRadio>
         <SearchContent>

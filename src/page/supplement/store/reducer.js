@@ -12,7 +12,7 @@ export default ( state=defualtState , action )=>{
   const { type, payload } = action;
   switch( type ) {
     case constants.ACTION_SET_MESSAGE_CALL:
-      return state.set('data', payload)
+      return state.set('actionres', payload)
     default:
         return state;
 
