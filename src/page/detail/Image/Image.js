@@ -10,14 +10,14 @@ import { Descriptions } from 'antd';
 export default memo(function Image(props) {
   const { data } = props;
   console.log(data);
-  const { name, url,people, description, createTime,relatedPeople} = data;
+  const { name, url,photographer, description, createTime,relatedPeople} = data;
 
   return (
     <Fragment>
       <DetailMiddle>
       <ImageContainer ><a href={url} target="_blank" ><img src={url}/></a><p>{name}</p></ImageContainer>
         <Descriptions layout="horizontal" column={1} style={{ width: 500,paddingTop: 30}}>
-          {people ? <Descriptions.Item label="拍摄者">{people}</Descriptions.Item> : ''}
+          {photographer ? <Descriptions.Item label="拍摄者">{photographer}</Descriptions.Item> : ''}
 
           {createTime ? <Descriptions.Item label="拍摄日期">{createTime}</Descriptions.Item> : ''}
           { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item, index) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}

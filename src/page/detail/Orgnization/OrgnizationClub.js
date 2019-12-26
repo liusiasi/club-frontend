@@ -38,7 +38,7 @@ export default memo(function OrgnizationClub(props) {
       <Fragment>
         <DetailLeftTop>
           <TitleContext>{name}</TitleContext>
-          <Descriptions layout="horizontal" column={1} style={{ width: 500}}>
+          <Descriptions layout="horizontal" column={1} style={{ width: 540}}>
             { creator?<Descriptions.Item label="发起人">{creator}</Descriptions.Item>:''}
             { startTime?<Descriptions.Item label="创办时间">{startTime}</Descriptions.Item>:''}
             { place?<Descriptions.Item label="创办地点">{place}</Descriptions.Item>:''}
@@ -94,9 +94,11 @@ export default memo(function OrgnizationClub(props) {
           {
               relatedPeople.length ?  relatedPeople.map((item, index )=>(
                 <ParaContext   key={item.id}>
-                  <Link to={`/detail?id=${item.id}&theme=${PEOPLE_TOPIC}`}
+                  <Link to={`/detail?id=${item.peopleId}&theme=${PEOPLE_TOPIC}`}
                     target="_blank"
-                  >{`${index+1}.${item.peopleName}`}</Link>
+                  >{`${index+1}.${item.peopleName}`}
+                  </Link>
+                  {item.relationDescription?`,${item.relationDescription}`:''}
                 </ParaContext> 
               ) ):<ParaContext>暂无</ParaContext> 
             } 

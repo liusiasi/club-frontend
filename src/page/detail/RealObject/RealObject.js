@@ -10,7 +10,7 @@ import CarouselContainer from 'component/carousel-container'
 
 export default memo(function RealObject(props) {
   const { data } = props;
-  const { organizationName, realObjectDetail:{name,description, images, createTime,source,nameHistory, relatedPeople}} = data;
+  const { organizationName, realObjectDetail:{name,description, images, createTime,source,nameHistory, relatedPeople,audios,videos}} = data;
 
   return (
     <Fragment>
@@ -26,6 +26,8 @@ export default memo(function RealObject(props) {
           {description ? <Descriptions.Item label="实物描述">{description}</Descriptions.Item> : ''}
         </Descriptions>
         {images.length ? <CarouselContainer title={'图片'} data={images} /> : <span />}
+        {audios?audios.length?<CarouselContainer title={'音频'} data={audios} />:<span/>:''}
+        {videos?videos.length?<CarouselContainer title={'视频'} data={videos} />:<span/>:''}
       </DetailMiddle>
     </Fragment>
   )

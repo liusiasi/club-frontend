@@ -92,10 +92,10 @@ class ListSearch extends PureComponent {
           <Radio.Group value={theme} size="large" onChange={this.changeSelected}>
             <Radio.Button value={ORGANIZATION_TOPIC}>社团</Radio.Button>
             <Radio.Button value={ACTIVITY_TOPIC}>活动</Radio.Button>
-            <Radio.Button value={PEOPLE_TOPIC}>人物</Radio.Button>
             <Radio.Button value={LITERATURE_TOPIC}>文献</Radio.Button>
             <Radio.Button value={HISTORICALINDEX_TOPIC}>史料</Radio.Button>
             <Radio.Button value={JOURNAL_TOPIC}>期刊</Radio.Button>
+            <Radio.Button value={PEOPLE_TOPIC}>人物</Radio.Button>
             <Radio.Button value={VIDEO_TOPIC}>视频</Radio.Button>
             <Radio.Button value={IMAGE_TOPIC}>图片</Radio.Button>
           </Radio.Group>

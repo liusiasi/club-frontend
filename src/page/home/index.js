@@ -56,7 +56,7 @@ class Home extends Component {
     return (
       <Fragment>
         <HomeWraper>
-          <ContainsNumber className='title'>中国科技社团</ContainsNumber>
+          <ContainsNumber className='title'>中国近现代科技社团</ContainsNumber>
           <ContainsNumber className='nums'>收录了{this.props.totalNumber}条社团信息</ContainsNumber>
           <SearchInput 
             toggleSearch={toggleSearch}

@@ -15,8 +15,8 @@ const defualtState = fromJS({
   activityData:{
     relatedPeople: [],
     images:[],
-    audio:[],
-    video:[]
+    videos:[],
+    audios:[],
   },
   literatureData : {
     relatedPeople: [],
@@ -29,6 +29,8 @@ const defualtState = fromJS({
     realObjectDetail: {
       relatedPeople: [],
       images:[],
+      videos:[],
+      audios:[],
     }
   },
   peopleData : {
@@ -39,8 +41,8 @@ const defualtState = fromJS({
     literatures:[], 
     realObjects:[], 
     images:[],
-    video:[],
-    audio:[],
+    videos:[],
+    audios:[],
 
   },
   journalData : {

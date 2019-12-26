@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import logo from './logo.jpg'
 
 export const HeaderWrapper = styled.div`
   position: relative;
@@ -26,7 +27,8 @@ export const NavItem = styled.div`
   }
   &.right {
     float: right;
-    font-size: 10px;
+    font-size: 15px;
+    color:#000;
   }
   cursor: pointer;
   a {
@@ -41,9 +43,10 @@ export const Logo = styled.div`
   float: left;
   display: block;
   margin: 20px 25px;
-
   height: 62px;
   width: 151px;
-  background: url(http://login.wanfangdata.com.cn//Content/src/img/anxs-logo_sns.png);
+  background: url(${logo});
   background-size: contain;
+  background-repeat:no-repeat;
+
 `

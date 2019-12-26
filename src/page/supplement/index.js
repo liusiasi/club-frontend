@@ -158,7 +158,7 @@ const Supplement = memo(function Supplement(props) {
           {getFieldDecorator('upload')(
             <Upload
               name="files"
-              action="stapi/resource/file/upload"
+              action="/stapi/resource/file/upload"
               onChange={handleFiles}
               beforeUpload={checkFilesNum}
               fileList={urlList}
