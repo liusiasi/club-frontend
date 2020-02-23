@@ -5,6 +5,7 @@ const { CleanWebpackPlugin }= require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
+  devtool: 'cheap-eval-module-source-map',
   entry: './src/index.js',
   resolve: {
     alias: {
