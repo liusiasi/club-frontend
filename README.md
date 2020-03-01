@@ -21,4 +21,4 @@ export const urlPrefix = 'http://admin.swczyc.com/stapi';
 ```
 
 项目演示地址
-http://admin.swczyc.com/shetuanGw/#/
+http://admin.swczyc.com/shetuanGw
