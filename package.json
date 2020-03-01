@@ -35,7 +35,7 @@
     "webpack-dev-server": "^3.8.0"
   },
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server ",
     "dist": "webpack -p",
     "start": "react-scripts start",
     "build": "react-scripts build",

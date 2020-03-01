@@ -98,12 +98,13 @@ module.exports = {
     hot: true,
     port: 8086,
     historyApiFallback: {
-      // rewrites: [{
-      //   from: /abc.html/,
-      //   to: '/index.html',
-      // }],
-      index: '/dist/index.html'
+      rewrites: [{
+        from: /abc.html/,
+        to: '/index.html',
+      }],
+      index: '/index.html'
     },
+    historyApiFallback: true,
     proxy: {
       '/stapi' : {
         target: 'http://admin.swczyc.com',

@@ -11,13 +11,13 @@ import store from './store';
 
 import 'antd/dist/antd.css';
 
-import { HashRouter as Router, Route,Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
 function App() {
   return (
     <div>
       <Provider store={store}>
         <GlobalStyle />
-        <Router>
+        <Router basename='shetuanGw'>
         <Header />
           <Switch>
             <Route path='/' exact component={Home}></Route>
