@@ -121,7 +121,7 @@ const Supplement = memo(function Supplement(props) {
    
     seturlList(fileList);
   }
-  const checkFilesNum = (file, fileList) => {
+  const checkFilesNum = (file) => {
     return new Promise((resolve, reject) => {
       if (urlList.length === 3) {
         message.error("最多上传三个文件");

@@ -45,10 +45,10 @@
     "dev": "webpack-dev-server ",
     "analyz": "NODE_ENV=production npm_config_report=true yarn dist",
     "dist": "NODE_ENV=production webpack --mode production",
-    "fix": "eslint --fix .",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "fix": "eslint --fix ."
   },
-  "pre-commit":[
+  "pre-commit": [
     "fix",
     "lint"
   ],
