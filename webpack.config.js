@@ -1,11 +1,15 @@
 var path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin }= require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
-module.exports = {
+const config = {
   mode: 'development',
-  devtool: 'cheap-eval-module-source-map',
   entry: './src/index.js',
   resolve: {
     alias: {
@@ -29,27 +33,32 @@ module.exports = {
     }, {
       test: /\.css$/,
       use: [
-        MiniCssExtractPlugin.loader,
-        'css-loader',
-      ]
-    }, {
-      test: /\.scss$/,
-      use: [
-        MiniCssExtractPlugin.loader,
         {
-          loader: 'css-loader',
+          loader: MiniCssExtractPlugin.loader,
           options: {
-            importLoaders: 2,
+            hmr: devMode,
+            reloadAll: true,
           },
         },
-        'sass-loader',
-      ],
+        'css-loader',
+      ]
     },
     {
       test: /\.less$/,
       use: [
-        MiniCssExtractPlugin.loader,
-        'css-loader',
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          hmr: devMode,
+          reloadAll: true,
+        },
+      },
+       {
+          loader: 'css-loader',
+          options:{
+            importLoaders:1,
+          }
+        },
         {
           loader: 'less-loader',
           options: {
@@ -68,14 +77,15 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js',
+    filename: devMode ? 'js/[name].js' : 'js/[name].[hash].js',
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
+      filename:devMode?'css/[name].css' : 'css/[name].[hash].css'
     }),
     new CleanWebpackPlugin(),
   ],
@@ -83,19 +93,31 @@ module.exports = {
     usedExports: true,
     splitChunks: {
       chunks: 'all',
+      minSize: 30000,
       cacheGroups: {
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
           name: 'vendors',
         },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+          name: 'common',
+        }
       },
     },
   },
-  devServer: {
+}
+
+if (devMode) {
+  config.devtool = 'cheap-module-eval-source-map';
+  config.devServer = {
+    contentBase: path.resolve(__dirname, 'dist'),
     overlay: true,
-    open: true,
     hot: true,
+    open: true,
     port: 8086,
     historyApiFallback: {
       rewrites: [{
@@ -104,12 +126,22 @@ module.exports = {
       }],
       index: '/index.html'
     },
-    historyApiFallback: true,
     proxy: {
-      '/stapi' : {
+      '/stapi': {
         target: 'http://admin.swczyc.com',
         changeOrigin: true,
       }
     }
-  },
+  } 
+}else{
+  config.optimization.minimizer = [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})];
+  config.plugins.push(
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
+    }))
 }
+
+
+
+module.exports = config

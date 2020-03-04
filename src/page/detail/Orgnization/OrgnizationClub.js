@@ -21,7 +21,7 @@ import { Descriptions,Carousel,Tabs} from 'antd';
 
 const { TabPane } = Tabs
 export default memo(function OrgnizationClub(props) {
-  const { data  } = props;
+  const { data } = props;
   const { organization : { name ,nameHistory ,startTime,place,creator,leader,secretariat,member,relatedPeople,logoUrl} ,activities,
           constitutions, historicalDataIndexs, journals, literatures, realObjects } = data;
   let imagesList = [];
@@ -50,7 +50,7 @@ export default memo(function OrgnizationClub(props) {
           <CarouselRightTop>
             <Carousel autoplay>
               {
-                imagesList.length? imagesList.map((item) => (<img src={item}/>)):''
+                imagesList.length? imagesList.map((item,index) => (<img src={item} key={index}/>)):''
               }
             </Carousel>
           </CarouselRightTop>

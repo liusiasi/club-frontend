@@ -1,5 +1,8 @@
 {
   "name": "club_frontend",
+  "sideEffect": [
+    "*.css"
+  ],
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,11 +13,13 @@
     "@loadable/component": "^5.10.3",
     "antd": "^3.23.1",
     "axios": "^0.19.0",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^0.12.1",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "moment": "^2.24.0",
@@ -32,16 +37,21 @@
     "styled-components": "^4.3.2",
     "urijs": "^1.19.2",
     "url-loader": "^2.1.0",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-dev-server": "^3.8.0",
+    "workbox-webpack-plugin": "^5.0.0"
   },
   "scripts": {
+    "start-server": "http-server dist",
     "dev": "webpack-dev-server ",
-    "dist": "webpack -p",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "analyz": "NODE_ENV=production npm_config_report=true yarn dist",
+    "dist": "NODE_ENV=production webpack --mode production",
+    "fix": "eslint --fix .",
+    "lint": "eslint ."
   },
+  "pre-commit":[
+    "fix",
+    "lint"
+  ],
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -62,10 +72,14 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "babel-core": "^6.26.3",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.3",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "sass-loader": "^8.0.0",
     "webpack": "^4.39.3",
+    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.8"
   }
 }

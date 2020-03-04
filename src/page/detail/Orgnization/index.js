@@ -1,7 +1,7 @@
 import loadable from "@loadable/component";
 import React from 'react'
 
-const OrgnizationClub = loadable(() => import("./OrgnizationClub.js"), {
+const OrgnizationClub = loadable(() => import(/* webpackChunkName: 'orgnization', webpackPrefetch: true */"./OrgnizationClub.js"), {
   fallback: <div>正在加载</div>
 });
 

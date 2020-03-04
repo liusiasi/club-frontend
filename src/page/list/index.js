@@ -1,4 +1,4 @@
-import React, { Component,Fragment } from 'react';
+import React, { Component } from 'react';
 import SearchInput from 'component/search-input/index';
 
 import {
@@ -49,10 +49,9 @@ class SearchList extends Component {
     [IMAGE_TOPIC]: this.props.getImagelList,
     [VIDEO_TOPIC]: this.props.getVideolList,
   }
-  componentWillMount(){
-    document.title = "社团数据知识服务平台";
-  }
+
   componentDidMount() {
+    document.title = "社团数据知识服务平台";
     const query = URI.parseQuery(this.props.location.search);
     const { advanceSearch,theme } = query;
     this.props.setSearch(advanceSearch === 'true');

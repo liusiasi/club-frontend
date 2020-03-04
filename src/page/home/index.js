@@ -21,7 +21,6 @@ import {
 import {
   toggleSearch
 } from '../list/store/actionCreator';
-import { __values } from 'tslib';
 @Form.create()
 class Home extends Component {
   constructor(props) {
@@ -32,14 +31,13 @@ class Home extends Component {
     }
   }
   componentDidMount(){
+    document.title = "社团数据知识服务平台";
     const { gettotalNumber,gethotClub } = this.props;
     gettotalNumber();
     gethotClub();
+
   }
 
-  componentWillMount(){
-    document.title = "社团数据知识服务平台";
-  }
   handleSearch = (payload) => {
     payload.theme = this.props.theme;
     payload.advanceSearch = this.props.advanceSearch;

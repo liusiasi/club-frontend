@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
 import './index.less'
 import { Spin } from 'antd';
@@ -18,7 +18,6 @@ import {
   getImageDetail,
   getVideoDetail,
 } from './store/actionCreator'
-import CardActivity from 'component/card-activity';
 import OrgnizationClub from './Orgnization'
 import {
   DetailWrapper
@@ -35,14 +34,14 @@ import {
   PEOPLE_TOPIC
 } from 'util/constants'
 
-const Activity = React.lazy(() => import(/* webpackChunkName: 'activity' */'./Activity/Activity'));
-const Literature = React.lazy(() => import(/* webpackChunkName: 'literature' */'./Literature/Literature'));
-const HistoricalIndex = React.lazy(() => import(/* webpackChunkName: 'historicalIndex' */'./HistoricalIndex/HistoricalIndex'));
-const RealObject = React.lazy(() => import(/* webpackChunkName: 'realObject' */'./RealObject/RealObject'));
-const People = React.lazy(() => import(/* webpackChunkName: 'people' */'./People/People'));
-const Journal = React.lazy(() => import(/* webpackChunkName: 'journal' */'./Journal/Journal'));
-const Image = React.lazy(() => import(/* webpackChunkName: 'image' */'./Image/Image'));
-const Video = React.lazy(() => import(/* webpackChunkName: 'video' */'./Video/Video'));
+const Activity = React.lazy(() => import(/* webpackChunkName: 'activity', webpackPrefetch: true */'./Activity/Activity'));
+const Literature = React.lazy(() => import(/* webpackChunkName: 'literature', webpackPrefetch: true */'./Literature/Literature'));
+const HistoricalIndex = React.lazy(() => import(/* webpackChunkName: 'historicalIndex', webpackPrefetch: true */'./HistoricalIndex/HistoricalIndex'));
+const RealObject = React.lazy(() => import(/* webpackChunkName: 'realObject', webpackPrefetch: true */'./RealObject/RealObject'));
+const People = React.lazy(() => import(/* webpackChunkName: 'people', webpackPrefetch: true */'./People/People'));
+const Journal = React.lazy(() => import(/* webpackChunkName: 'journal', webpackPrefetch: true */'./Journal/Journal'));
+const Image = React.lazy(() => import(/* webpackChunkName: 'image', webpackPrefetch: true */'./Image/Image'));
+const Video = React.lazy(() => import(/* webpackChunkName: 'video', webpackPrefetch: true */'./Video/Video'));
 
 class Detail extends Component {
   constructor(props) {

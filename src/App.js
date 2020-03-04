@@ -13,11 +13,12 @@ import 'antd/dist/antd.css';
 
 import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
 function App() {
+  console.log(process.env.NODE_ENV);
   return (
     <div>
       <Provider store={store}>
         <GlobalStyle />
-        <Router basename='shetuanGw'>
+        <Router basename={process.env.NODE_ENV==='production'?'shetuanGw':''}>
         <Header />
           <Switch>
             <Route path='/' exact component={Home}></Route>
