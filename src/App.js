@@ -13,7 +13,6 @@ import 'antd/dist/antd.css';
 
 import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
 function App() {
-  console.log(process.env.NODE_ENV);
   return (
     <div>
       <Provider store={store}>

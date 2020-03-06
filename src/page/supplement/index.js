@@ -1,8 +1,6 @@
 import React, {
   memo,
   useState,
-  useCallback,
-  useEffect,
   useRef
 } from 'react'
 import {
@@ -18,7 +16,7 @@ import {
 import MUtil from 'util/mm.js';
 import {
   handleSuppelemnt,
-} from './store/actionCreator'; 
+} from './store/actionCreator';
 import {
   bindActionCreators
 } from 'redux'
@@ -51,25 +49,25 @@ const Supplement = memo(function Supplement(props) {
               url: urlList[i].url
             });
           }
-        }else{
+        } else {
           message.error('请上传资料！');
           return;
         }
         delete values.upload;
         values.supplementFile = supplementFile;
-        props.handleSuppelemnt(values).then(()=>{
-            if(currentSuccess.current){
-              const args = {
-                message: '提交成功',
-                description:
+        props.handleSuppelemnt(values).then(() => {
+          if (currentSuccess.current) {
+            const args = {
+              message: '提交成功',
+              description:
                 '您的资料已经成功提交，非常感谢',
-                duration: null,
-                onClose: () => props.history.goBack(),
-              };
-              notification.success(args);
-            }else{
-              message.error(currentMsg.current);
-            }
+              duration: null,
+              onClose: () => props.history.goBack(),
+            };
+            notification.success(args);
+          } else {
+            message.error(currentMsg.current);
+          }
         })
       }
     });
@@ -110,7 +108,7 @@ const Supplement = memo(function Supplement(props) {
     // 3. filter successfully uploaded files according to response from server
     fileList = fileList.filter((file) => {
       if (file.response && typeof data == 'object') {
-        if( file.response.success === false ) {
+        if (file.response.success === false) {
           message.error(file.response.msg);
           return false;
         }
@@ -118,7 +116,7 @@ const Supplement = memo(function Supplement(props) {
       }
       return true;
     });
-   
+
     seturlList(fileList);
   }
   const checkFilesNum = (file) => {
@@ -129,7 +127,7 @@ const Supplement = memo(function Supplement(props) {
       } else {
         resolve(file);
       }
-    });  
+    });
 
   }
 
@@ -144,8 +142,9 @@ const Supplement = memo(function Supplement(props) {
         <FormItem label="资料名称">
           {getFieldDecorator('supplementSummary', {
             rules: [{ required: true, message: '请输入资料名称' }],
-          })
-            (<Input placeholder="请输入资料名称" />)}
+          })(
+            <Input placeholder="请输入资料名称" />
+          )}
         </FormItem>
         <FormItem label="资料描述">
           {getFieldDecorator('supplementDescription', {
@@ -195,14 +194,14 @@ const Supplement = memo(function Supplement(props) {
   )
 })
 
-const mapStateToProps = (state) =>({
-  success: state.getIn(['supplement','actionres','success']),
-  msg: state.getIn(['supplement','actionres','msg']),
+const mapStateToProps = (state) => ({
+  success: state.getIn(['supplement', 'actionres', 'success']),
+  msg: state.getIn(['supplement', 'actionres', 'msg']),
 })
-const mapDispatchToProps = (dispatch) =>{
+const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     handleSuppelemnt
-  },dispatch)
+  }, dispatch)
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(Form.create()(Supplement));
+export default connect(mapStateToProps, mapDispatchToProps)(Form.create()(Supplement));

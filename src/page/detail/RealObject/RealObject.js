@@ -22,7 +22,7 @@ export default memo(function RealObject(props) {
 
           {createTime ? <Descriptions.Item label="创建日期">{createTime}</Descriptions.Item> : ''}
           {source ? <Descriptions.Item label="来源">{source}</Descriptions.Item> : ''}
-          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item, index) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}
+          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}
           {description ? <Descriptions.Item label="实物描述">{description}</Descriptions.Item> : ''}
         </Descriptions>
         {images.length ? <CarouselContainer title={'图片'} data={images} /> : <span />}

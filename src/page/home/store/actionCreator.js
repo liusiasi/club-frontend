@@ -2,7 +2,6 @@ import * as constants from './constants'
 import { fromJS } from 'immutable'
 
 import HotClub from 'service/hotclub-service';
-import { message } from 'antd';
 
 const _hotclub = new HotClub();
 

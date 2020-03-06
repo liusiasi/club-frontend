@@ -5,7 +5,7 @@ import {
   TitleContext,
   DetailMiddle,
 } from '../common.js'
-import { Descriptions,Tabs} from 'antd';
+import { Descriptions} from 'antd';
 import CarouselContainer from 'component/carousel-container'
 
 export default memo(function Activity(props) {
@@ -23,7 +23,7 @@ export default memo(function Activity(props) {
               { place?<Descriptions.Item label="活动地点">{place}</Descriptions.Item>:''}
               { type?<Descriptions.Item label="活动类型">{type == 1 ? '学术活动': type == 2 ? '科普活动' : type == 3 ? '实业活动' : '其他活动'}</Descriptions.Item>:''}
 
-              { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item, index) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}
+              { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}
               { content?<Descriptions.Item label="活动内容">{content}</Descriptions.Item>:''}
         </Descriptions>
         {images.length? <CarouselContainer title={'图片'} data={images} />:<span/>}

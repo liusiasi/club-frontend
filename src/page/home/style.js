@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import bg from '../../statics/bg.jpg'
 
 export const HomeWraper = styled.div`
   background-position: center center;

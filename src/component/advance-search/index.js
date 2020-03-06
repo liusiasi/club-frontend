@@ -187,7 +187,7 @@ const LiteratureSearch = memo(function Search(props) {
 })
 
 const HistoricalSearch = memo(function Search(props) {
-  const { handleFormReset, name, type, startTime,endTime,  organizationName, onSearch, FormReset } = props;
+  const { handleFormReset, name, startTime,endTime,  organizationName, onSearch, FormReset } = props;
   const { getFieldDecorator } = props.form;
   useEffect(() => {
     return () => {
@@ -351,7 +351,7 @@ const VideoSearch = memo(function Search(props) {
 })
 
 const PeopleSearch = memo(function Search(props) {
-  const { handleFormReset, name, type, startTime,endTime,  organizationName, onSearch, FormReset } = props;
+  const { handleFormReset, name, organizationName, onSearch, FormReset } = props;
   const { getFieldDecorator } = props.form;
   useEffect(() => {
     return () => {

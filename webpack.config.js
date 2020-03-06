@@ -7,10 +7,13 @@ const devMode = process.env.NODE_ENV !== 'production';
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin');
 
 const config = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    main:'./src/index.js',
+  },
   resolve: {
     alias: {
       page: path.resolve(__dirname, 'src/page'),
@@ -46,17 +49,17 @@ const config = {
     {
       test: /\.less$/,
       use: [
-      {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-          hmr: devMode,
-          reloadAll: true,
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: devMode,
+            reloadAll: true,
+          },
         },
-      },
-       {
+        {
           loader: 'css-loader',
-          options:{
-            importLoaders:1,
+          options: {
+            importLoaders: 1,
           }
         },
         {
@@ -81,16 +84,18 @@ const config = {
   },
   plugins: [
     new BundleAnalyzerPlugin(),
+    new AntdDayjsWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
     new MiniCssExtractPlugin({
-      filename:devMode?'css/[name].css' : 'css/[name].[hash].css'
+      filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css'
     }),
     new CleanWebpackPlugin(),
   ],
   optimization: {
     usedExports: true,
+    runtimeChunk: 'single',
     splitChunks: {
       chunks: 'all',
       minSize: 30000,
@@ -99,6 +104,22 @@ const config = {
           test: /[\\/]node_modules[\\/]/,
           priority: -10,
           name: 'vendors',
+        },
+        "react-vendor": {
+          test: (module) => {
+            debugger;
+            return /react/.test(module.context) || /redux/.test(module.context)
+            || /classnames/.test(module.context) || /prop-types/.test(module.context)},
+          priority: 3,
+          reuseExistingChunk: true,
+          name: 'react',
+        },
+        "antd-vendor": {
+          // || /[\\/]node_modules[\\/]/.test(module.context)
+          test: (module) => (/antd?/.test(module.context)),
+          priority: 2,
+          reuseExistingChunk: true,
+          name: 'antd',
         },
         default: {
           minChunks: 2,
@@ -132,8 +153,8 @@ if (devMode) {
         changeOrigin: true,
       }
     }
-  } 
-}else{
+  }
+} else {
   config.optimization.minimizer = [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})];
   config.plugins.push(
     new WorkboxPlugin.GenerateSW({

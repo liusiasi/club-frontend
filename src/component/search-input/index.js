@@ -30,7 +30,7 @@ class ListSearch extends PureComponent {
   }
 
 
-  componentDidUpdate(nextProps, nextState){
+  componentDidUpdate(nextProps){
     if(nextProps.name !== this.props.name){
       this.setState({
         name: this.props.name,

@@ -4,7 +4,6 @@ import {
   ContainsNumber
 } from './style';
 import Footer from 'common/footer';
-import {Form  } from 'antd';
 import SearchInput from 'component/search-input/index';
 import CommonList from 'component/common-list/index';
 import { connect } from 'react-redux';
@@ -21,7 +20,6 @@ import {
 import {
   toggleSearch
 } from '../list/store/actionCreator';
-@Form.create()
 class Home extends Component {
   constructor(props) {
     super(props);

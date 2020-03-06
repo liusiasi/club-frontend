@@ -3,9 +3,9 @@ export function register(){
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('../service-worker.js')
             .then(registration => {
-                console.log('Server-worker registed');
+                console.log('Server-worker registed'+ registration);
             }).catch(error => {
-                console.log('Server-worker register error');
+                console.log('Server-worker register error'+ error);
             })
         })
     }else{

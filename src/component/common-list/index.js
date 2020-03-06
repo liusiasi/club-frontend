@@ -35,6 +35,7 @@ const CommonItem = memo(function ListItem(props) {
       case '图片':
         return <MetaWrapper>
           <Link to={`/detail?id=${item.id}&theme=${theme}`}
+            target="_blank"
           >
             {<img src={item.url} />}
           </Link>
@@ -43,6 +44,7 @@ const CommonItem = memo(function ListItem(props) {
       case '视频':
         return <MetaWrapper>
         <Link to={`/detail?id=${item.id}&theme=${theme}`}
+          target="_blank"
         >
           {<video src={item.url} controls="controls" />}
         </Link>
@@ -55,6 +57,7 @@ const CommonItem = memo(function ListItem(props) {
           }
           title={
             <Link to={`/detail?id=${item.id}&theme=${theme}`}
+              target="_blank"
             >{item.index + "." + item.name}</Link>}
           description={item.description}
         />

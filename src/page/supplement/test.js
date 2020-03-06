@@ -12,11 +12,7 @@ export default class Text extends Component{
     console.log(prevState);
     console.log(this.state);
   }
-  componentWillUpdate(nextProps, nextState){
-    console.log('componentWillUpdate');
-    console.log(nextState);
-    console.log(this.state);
-  }
+
 
   handleclick() {
     this.setState({

@@ -3,7 +3,6 @@ import React, {
 } from 'react'
 import { Link } from 'react-router-dom';
 import {
-  TitleContext,
   DetailMiddle,
 } from '../common.js'
 import {

@@ -23,7 +23,7 @@ export default memo(function Journal(props) {
           {startTime ? <Descriptions.Item label="创刊日期">{startTime}</Descriptions.Item> : ''}
           {endTime ? <Descriptions.Item label="结刊日期">{endTime}</Descriptions.Item> : ''}
 
-          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item, index) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}
+          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}
 
           {description ? <Descriptions.Item label="期刊描述">{description}</Descriptions.Item> : ''}
         </Descriptions>
