@@ -115,9 +115,11 @@ export default memo(function CommonList(props) {
         grid={theme === '图片' || theme === '视频' ? {
           gutter: 16,
           column: 2
-        } : {}}
-        style={theme === '图片' || theme === '视频' ? {} : { marginLeft: 20 }}
-        itemLayout="vertical"
+        } : {
+          column: 1,
+        }}
+        style={theme === '图片' || theme === '视频' ? { marginLeft: 35 } : { marginLeft: 45 }}
+        itemLayout="horizontal"
         size="large"
         dataSource={listData}
         pagination={total ? paginationProps : ''}

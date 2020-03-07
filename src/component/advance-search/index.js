@@ -3,13 +3,10 @@ import React, {
   useEffect
 } from 'react'
 
-import {
-  Form,
-  Input,
-  Button,
-  DatePicker,
-  Select
-} from 'antd';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+
+import { Input, Button, DatePicker, Select } from 'antd';
 import {
   ORGANIZATION_TOPIC,
   ACTIVITY_TOPIC,
@@ -68,7 +65,7 @@ const OrgnizationSearch = memo(function Search(props) {
         </FormItem>
         <span>
           <Button type="primary" onClick={onSearch}>搜索</Button>
-          <Button style={{ marginLeft: 8 }} onClick={handleFormReset}>重置</Button>
+          <Button style={{ marginLeft: 8 , marginTop: 4}} onClick={handleFormReset}>重置</Button>
         </span>
       </Form>
     </div>

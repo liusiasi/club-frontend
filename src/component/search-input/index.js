@@ -6,6 +6,7 @@ import {
   SearchContent
 } from './style';
 import './index.less';
+import { SearchOutlined } from '@ant-design/icons';
 import { Input, Button, Radio } from 'antd';
 import AdvanceSearch from 'component/advance-search/index';
 import {
@@ -85,7 +86,7 @@ class ListSearch extends PureComponent {
     console.log('render');
 
     const { advanceSearch,theme } = this.props;
-    const prefixButton = (<Button type="primary" icon="search" id="btn" onClick={this.singleSearchValue}>搜索</Button>);
+    const prefixButton = (<Button type="primary" icon={<SearchOutlined />} id="btn" onClick={this.singleSearchValue}>搜索</Button>);
     return (
       <SearchWraper>
         <SearchRadio>

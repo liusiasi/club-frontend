@@ -9,7 +9,6 @@ export const TitleContext = styled.div`
   width:500px;
 `
 
-
 export const DetailLeftTop = styled.div`
   width: 900px;
   padding: 20px 0px;
@@ -28,6 +27,13 @@ export const CarouselRightTop = styled.div`
     line-height: 160px;
     background: #364d79;
     overflow: hidden;
+  }
+  .slick-dots li button:before {
+    content: ' '!important
+  }
+
+  .ant-carousel .slick-dots {
+    width: 70%
   }
   
   .ant-carousel .slick-slide h3 {

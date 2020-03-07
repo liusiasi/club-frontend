@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ListWrapper = styled.div`
-  width: 820px;
+  width: 890px;
   margin: 0 auto 20px;
   min-height: 500px;
   .ant-list-vertical .ant-list-item-meta-title > a{

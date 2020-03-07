@@ -105,22 +105,6 @@ const config = {
           priority: -10,
           name: 'vendors',
         },
-        "react-vendor": {
-          test: (module) => {
-            debugger;
-            return /react/.test(module.context) || /redux/.test(module.context)
-            || /classnames/.test(module.context) || /prop-types/.test(module.context)},
-          priority: 3,
-          reuseExistingChunk: true,
-          name: 'react',
-        },
-        "antd-vendor": {
-          // || /[\\/]node_modules[\\/]/.test(module.context)
-          test: (module) => (/antd?/.test(module.context)),
-          priority: 2,
-          reuseExistingChunk: true,
-          name: 'antd',
-        },
         default: {
           minChunks: 2,
           priority: -20,

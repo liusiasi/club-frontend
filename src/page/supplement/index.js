@@ -3,16 +3,10 @@ import React, {
   useState,
   useRef
 } from 'react'
-import {
-  Input,
-  Form,
-  Button,
-  Card,
-  Upload,
-  Icon,
-  message,
-  notification
-} from 'antd'
+import { UploadOutlined } from '@ant-design/icons';
+import { Form } from '@ant-design/compatible';
+import '@ant-design/compatible/assets/index.css';
+import { Input, Button, Card, Upload, message, notification } from 'antd';
 import MUtil from 'util/mm.js';
 import {
   handleSuppelemnt,
@@ -164,7 +158,7 @@ const Supplement = memo(function Supplement(props) {
               headers={{ 'X-Requested-With': null }}
             >
               <Button type="primary">
-                <Icon type="upload" />请选择文件</Button>
+                <UploadOutlined />请选择文件</Button>
             </Upload>
 
           )}
@@ -191,7 +185,7 @@ const Supplement = memo(function Supplement(props) {
         </FormItem>
       </Form>
     </Card>
-  )
+  );
 })
 
 const mapStateToProps = (state) => ({
