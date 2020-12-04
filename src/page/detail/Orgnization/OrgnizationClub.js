@@ -33,7 +33,6 @@ export default memo(function OrgnizationClub(props) {
   if(logoUrl){
     imagesList = imagesList.concat([logoUrl]);
   }
-  console.log(imagesList);
   return (
       <Fragment>
         <DetailLeftTop>

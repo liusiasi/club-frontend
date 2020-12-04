@@ -14,8 +14,8 @@ export const FooterItem = styled.div`
   padding: 0 15px;
   line-height: 50px;
   color: #ffffff;
-  &.left {
-    float: left;
+  &.middle {
+    text-align: center;
     font-size: 15px;
   }
   &.right {

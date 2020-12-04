@@ -17,7 +17,7 @@ export default memo(function Journal(props) {
       <DetailMiddle>
         <TitleContext>{name}</TitleContext>
         <Descriptions layout="horizontal" column={1} style={{ width: 500 }}>
-          {organizationName ? <Descriptions.Item label="相关社团名称">{organizationName}</Descriptions.Item> : ''}
+          {organizationName ? <Descriptions.Item label="所属社团">{organizationName}</Descriptions.Item> : ''}
           {nameHistory ? <Descriptions.Item label="名称沿革">{nameHistory}</Descriptions.Item> : ''}
 
           {startTime ? <Descriptions.Item label="创刊日期">{startTime}</Descriptions.Item> : ''}

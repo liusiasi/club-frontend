@@ -63,7 +63,6 @@ class Detail extends Component {
       getVideoDetail
      } = this.props;
     const { theme, id } = this.state;
-    console.log(this.state);
     switch (theme) {
       case ORGANIZATION_TOPIC:
         getClubDetail(id);
@@ -111,7 +110,6 @@ class Detail extends Component {
       videoData,
       isLoading } = this.props;
     const { theme } = this.state;
-    console.log(imageData.toJS());
     return (
       isLoading ? <Spin /> : <DetailWrapper>{
         (() => {

@@ -9,7 +9,6 @@ import { Descriptions } from 'antd';
 
 export default memo(function Image(props) {
   const { data } = props;
-  console.log(data);
   const { name, url,photographer, description, createTime,relatedPeople} = data;
 
   return (

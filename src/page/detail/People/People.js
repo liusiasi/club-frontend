@@ -43,9 +43,9 @@ export default memo(function People(props) {
         </DetailInfo>
         <Tabs defaultActiveKey="shengping">
           <TabPane tab="人物生平" key="shengping" >
-            {/* 相关社团信息 */}
+            {/* 所属社团信息 */}
             {organizations.length ? <ParaSection>
-              <p>相关社团</p>
+              <p>所属社团</p>
               {
                 organizations.map((item, index) => {
                   const { id, name, startTime, creator, leader, secretariat, member } = item

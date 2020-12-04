@@ -16,7 +16,7 @@ export default memo(function Activity(props) {
       <DetailMiddle>
         <TitleContext>{name}</TitleContext>
         <Descriptions layout="horizontal" column={1} style={{ width: 500}}>
-              { organizationName?<Descriptions.Item label="承办社团名称">{organizationName}</Descriptions.Item>:''}
+              { organizationName?<Descriptions.Item label="所属社团">{organizationName}</Descriptions.Item>:''}
 
               { startTime?<Descriptions.Item label="开始日期">{startTime}</Descriptions.Item>:''}
               { endTime?<Descriptions.Item label="结束日期">{endTime}</Descriptions.Item>:''}

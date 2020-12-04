@@ -83,7 +83,7 @@ const config = {
     filename: devMode ? 'js/[name].js' : 'js/[name].[hash].js',
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
     new AntdDayjsWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./src/index.html",

@@ -39,6 +39,8 @@ class Home extends Component {
   handleSearch = (payload) => {
     payload.theme = this.props.theme;
     payload.advanceSearch = this.props.advanceSearch;
+    payload.rows = 10;
+    payload.page = 1;
     const params = Object.keys(payload).filter( k => payload[k] !== undefined && payload[k].length !== 0)
     .map(k => k + '=' + payload[k])
     .join('&');

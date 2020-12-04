@@ -1,14 +1,20 @@
 import * as constants from './constants'
 import { fromJS } from 'immutable'
 import ListService from 'service/list-service';
+
+const defaultData = {
+  result: [],
+  pageSize: null,
+  pageNumber: null,
+  total: null,
+}
+
 const _listservice = new ListService();
 
 const setTableList = ( data) => ({
   type: constants.ACTION_SET_PAGE_List,
   payload: fromJS(data),
 })
-
-
 
 const setLoading= ( data) => ({
   type: constants.ACTION_SET_LOADING,
@@ -43,6 +49,7 @@ export const getClubList = (data) => {
       }
     }, errMsg => {
       console.log(errMsg);
+      dispatch(setTableList(defaultData));
       dispatch(setLoading(false));
     })
   }
@@ -58,6 +65,7 @@ export const getActivityList = (data) => {
       }
     }, errMsg => {
       console.log(errMsg);
+      dispatch(setTableList(defaultData));
       dispatch(setLoading(false));
     })
   }
@@ -73,6 +81,7 @@ export const getLiteratureList = (data) => {
       }
     }, errMsg => {
       console.log(errMsg);
+      dispatch(setTableList(defaultData));
       dispatch(setLoading(false));
     })
   }
@@ -88,6 +97,7 @@ export const getPeopleList = (data) => {
       }
     }, errMsg => {
       console.log(errMsg);
+      dispatch(setTableList(defaultData));
       dispatch(setLoading(false));
     })
   }
@@ -103,6 +113,7 @@ export const getHistoricalIndexList = (data) => {
       }
     }, errMsg => {
       console.log(errMsg);
+      dispatch(setTableList(defaultData));
       dispatch(setLoading(false));
     })
   }
@@ -118,6 +129,7 @@ export const getJournalList = (data) => {
       }
     }, errMsg => {
       console.log(errMsg);
+      dispatch(setTableList(defaultData));
       dispatch(setLoading(false));
     })
   }
@@ -133,6 +145,7 @@ export const getImagelList = (data) => {
       }
     }, errMsg => {
       console.log(errMsg);
+      dispatch(setTableList(defaultData));
       dispatch(setLoading(false));
     })
   }
@@ -148,6 +161,7 @@ export const getVideolList = (data) => {
       }
     }, errMsg => {
       console.log(errMsg);
+      dispatch(setTableList(defaultData));
       dispatch(setLoading(false));
     })
   }

@@ -58,7 +58,7 @@ const CommonItem = memo(function ListItem(props) {
           title={
             <Link to={`/detail?id=${item.id}&theme=${theme}`}
               target="_blank"
-            >{item.index + "." + item.name}</Link>}
+            >{item.index + (item.name?item.name.indexOf("《") == -1 ?". ":".":"") + item.name}</Link>}
           description={item.description}
         />
 

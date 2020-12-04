@@ -23,7 +23,6 @@ import {
 
 class ListSearch extends PureComponent {
   constructor(props){
-    console.log('constructor');
     super(props);
     this.state = {
       name: this.props.name
@@ -51,7 +50,6 @@ class ListSearch extends PureComponent {
   /*修改name
    */
   changeInput = (e) => {
-    console.log('changeInput');
     this.setState({
       name: e.target.value,
     })
@@ -83,8 +81,6 @@ class ListSearch extends PureComponent {
     this.props.toggleSearch();
   }
   render() {
-    console.log('render');
-
     const { advanceSearch,theme } = this.props;
     const prefixButton = (<Button type="primary" icon={<SearchOutlined />} id="btn" onClick={this.singleSearchValue}>搜索</Button>);
     return (

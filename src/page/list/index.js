@@ -4,7 +4,6 @@ import SearchInput from 'component/search-input/index';
 import {
   ListWrapper,
 } from './style.js';
-import './index.less';
 import { connect } from 'react-redux';
 import {
   bindActionCreators
@@ -58,8 +57,6 @@ class SearchList extends Component {
     this.props.setTheme(theme);
     query.advanceSearch = (advanceSearch === 'true');
     this.getCommonList({
-      page: 1,
-      rows:10,
       ...query,
     })
     this.setState({
@@ -83,14 +80,14 @@ class SearchList extends Component {
    */
   handleSearch = (payload) => {
     payload.advanceSearch = this.props.advanceSearch;
+    payload.rows = 10;
+    payload.page = 1;
     const params = Object.keys(payload).filter( k => payload[k] !== undefined && payload[k].length !== 0).map(k => (k + '=' + payload[k])).join('&');
     this.props.history.push(`list?${params}`);
     this.setState({
       ...payload
     })
     this.getCommonList({
-      rows:10,
-      page:1,
       ...payload,
     });
   }
@@ -113,11 +110,18 @@ class SearchList extends Component {
   }
 
   handleListChange = (page, rows) => {
-    this.getCommonList({
+    this.setState({
       page,
       rows,
-      ...this.state,
+    },()=>{
+      const payload = this.state;
+      const params = Object.keys(payload).filter( k => payload[k] !== undefined && payload[k].length !== 0).map(k => (k + '=' + payload[k])).join('&');
+      this.props.history.push(`list?${params}`);
+      this.getCommonList({
+        ...this.state,
+      })
     })
+
   }
   toggleSearch = () => {
     const { toggleSearch } = this.props;
@@ -126,6 +130,7 @@ class SearchList extends Component {
 
   render() {
     const { result, total, pageSize, pageNumber, isdataLoading , theme, advanceSearch} = this.props;
+    console.log(isdataLoading+'loading');
     return (
         <ListWrapper>
           <SearchInput 

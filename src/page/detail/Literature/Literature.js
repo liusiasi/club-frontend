@@ -17,7 +17,7 @@ export default memo(function Literature(props) {
       <DetailMiddle>
         <TitleContext>{name}</TitleContext>
         <Descriptions layout="horizontal" column={1} style={{ width: 500 }}>
-          {organizationName ? <Descriptions.Item label="相关社团名称">{organizationName}</Descriptions.Item> : ''}
+          {organizationName ? <Descriptions.Item label="所属社团">{organizationName}</Descriptions.Item> : ''}
 
           {createTime ? <Descriptions.Item label="文献日期">{createTime}</Descriptions.Item> : ''}
           {source ? <Descriptions.Item label="出处来源">{source}</Descriptions.Item> : ''}

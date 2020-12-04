@@ -12,7 +12,7 @@ class Header extends Component {
       <HeaderWrapper>
         <Nav>
           <Logo />
-          <NavItem className='left active'><Link  to="/">中国近现代科技科技社团</Link></NavItem>
+          <NavItem className='left active'><Link  to="/">中国近现代科技社团</Link></NavItem>
           <NavItem className='right active'><Link  to="/supplement">社团资料补充</Link></NavItem>
         </Nav>
       </HeaderWrapper>

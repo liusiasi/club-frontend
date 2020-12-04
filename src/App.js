@@ -9,8 +9,6 @@ import Supplement from 'page/supplement/index.js';
 import { Provider } from 'react-redux';
 import store from './store';
 
-import 'antd/dist/antd.css';
-
 import { BrowserRouter as Router, Route,Switch } from 'react-router-dom';
 function App() {
   return (

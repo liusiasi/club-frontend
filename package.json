@@ -1,7 +1,8 @@
 {
   "name": "club_frontend",
   "sideEffect": [
-    "*.css"
+    "*.css",
+    "*.less"
   ],
   "version": "0.1.0",
   "private": true,

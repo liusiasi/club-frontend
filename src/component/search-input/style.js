@@ -10,6 +10,7 @@ export const SearchRadio = styled.div`
   margin: 10px auto;
   .ant-radio-button-wrapper {
     width: 90px;
+    text-align: center;
   }
 `
 export const SearchContent = styled.div`
