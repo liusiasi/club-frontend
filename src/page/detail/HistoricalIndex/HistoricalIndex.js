@@ -7,10 +7,12 @@ import {
 } from '../common.js'
 import { Descriptions } from 'antd';
 import CarouselContainer from 'component/carousel-container'
+import MUtil from 'util/mm.js';
+const _mm = new MUtil();
 
 export default memo(function HistoricalIndex(props) {
   const { data } = props;
-  const { name, organizationName, description, images, createTime } = data;
+  const { name, organizationName, description, images, createTime, createTimeType } = data;
 
   return (
     <Fragment>
@@ -18,7 +20,7 @@ export default memo(function HistoricalIndex(props) {
         <TitleContext>{name}</TitleContext>
         <Descriptions layout="horizontal" column={1} style={{ width: 500 }}>
           {organizationName ? <Descriptions.Item label="所属社团">{organizationName}</Descriptions.Item> : ''}
-          {createTime ? <Descriptions.Item label="史料日期">{createTime}</Descriptions.Item> : ''}
+          {createTime ? <Descriptions.Item label="史料日期">{_mm.configTime(createTime, createTimeType)}</Descriptions.Item> : ''}
 
           {description ? <Descriptions.Item label="史料描述">{description}</Descriptions.Item> : ''}
         </Descriptions>

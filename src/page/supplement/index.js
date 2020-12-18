@@ -90,6 +90,19 @@ const Supplement = memo(function Supplement(props) {
   };
   const handleFiles = (info) => {
     let fileList = info.fileList;
+
+    // 1. filter successfully uploaded files according to response from server
+    fileList = fileList.filter((file) => {
+      if (file.response && typeof file.response == 'object') {
+        if (file.response.success === false) {
+          message.error(file.response.msg);
+          return false;
+        }
+        return true;
+      }
+      return true;
+    });
+
     // 2. read from response and show file link
     fileList = fileList.map((file) => {
       if (file.response) {
@@ -99,17 +112,7 @@ const Supplement = memo(function Supplement(props) {
       return file;
     });
 
-    // 3. filter successfully uploaded files according to response from server
-    fileList = fileList.filter((file) => {
-      if (file.response && typeof data == 'object') {
-        if (file.response.success === false) {
-          message.error(file.response.msg);
-          return false;
-        }
-        return true;
-      }
-      return true;
-    });
+
 
     seturlList(fileList);
   }

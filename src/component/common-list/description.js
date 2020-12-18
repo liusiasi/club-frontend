@@ -1,5 +1,9 @@
 import React from 'react';
-import {Typography, } from 'antd';
+import {Typography} from 'antd';
+
+import MUtil from 'util/mm.js';
+const _mm = new MUtil();
+
 const { Text } = Typography;
 
 export const OrgnizationDes = (data ,current,pageSize ) => {
@@ -11,7 +15,7 @@ export const OrgnizationDes = (data ,current,pageSize ) => {
       name: item.get('name'),
       logoUrl: item.get('logoUrl') === null ? '/shetuanGw/resource/icon.jpeg' : item.get('logoUrl'),
       description: (<div id='Text'><Text >{'发起人: ' + (item.get('creator') ? item.get('creator') : '暂无')}</Text>
-        <br /><Text >{'创办时间: ' + (item.get('startTime') ? item.get('startTime') : '暂无')}</Text>
+        <br /><Text >{'创办时间: ' + (item.get('startTime') ? _mm.configTime(item.get('startTime'),item.get('startTimeType')) : '暂无')}</Text>
         <br /><Text >{'创办地点: ' + (item.get('place') ? item.get('place') : '暂无')}</Text>
       </div>
       ),
@@ -29,7 +33,7 @@ export const ActivityDes = (data ,current,pageSize ) => {
       name: item.get('name'),
       logoUrl: item.get('image') === null ? '/shetuanGw/resource/icon.jpeg' : item.get('image'),
       description: (<div id='Text'><Text >{'所属社团: ' + (item.get('organizationName') ? item.get('organizationName') : '暂无')}</Text>
-        <br /><Text >{'活动时间: ' + (item.get('startTime') ? item.get('startTime') : '暂无')}</Text>
+        <br /><Text >{'活动时间: ' + (item.get('startTime') ? _mm.configTime(item.get('startTime'),item.get('startTimeType')) : '暂无')}</Text>
         <br /><Text >{'活动地点: ' + (item.get('place') ? item.get('place') : '暂无')}</Text>
       </div>
       ),
@@ -49,7 +53,7 @@ export const LiteratureDes = (data ,current,pageSize ) => {
       name: item.get('name'),
       logoUrl: item.get('image') === null ? '/shetuanGw/resource/icon.jpeg' : item.get('image'),
       description: (<div id='Text'><Text >{'所属社团: ' + (item.get('organizationName') ? item.get('organizationName') : '暂无')}</Text>
-        <br /><Text >{'文献日期: ' + (item.get('createTime') ? item.get('createTime') : '暂无')}</Text>
+        <br /><Text >{'文献日期: ' + (item.get('createTime') ? _mm.configTime(item.get('createTime'),item.get('createTimeType')) : '暂无')}</Text>
       </div>
       ),
 
@@ -67,7 +71,7 @@ export const HistoricalindexDes = (data ,current,pageSize ) => {
       name: item.get('name'),
       logoUrl: item.get('image') === null ? '/shetuanGw/resource/icon.jpeg' : item.get('image'),
       description: (<div id='Text'><Text >{'所属社团: ' + (item.get('organizationName') ? item.get('organizationName') : '暂无')}</Text>
-        <br /><Text >{'史料日期: ' + (item.get('createTime') ? item.get('createTime') : '暂无')}</Text>
+        <br /><Text >{'史料日期: ' + (item.get('createTime') ? _mm.configTime(item.get('createTime'),item.get('createTimeType')) : '暂无')}</Text>
       </div>
       ),
 
@@ -85,8 +89,8 @@ export const JournalDes = (data ,current,pageSize ) => {
       name: item.get('name'),
       logoUrl: item.get('image') === null ? '/shetuanGw/resource/icon.jpeg' : item.get('image'),
       description: (<div id='Text'><Text >{'所属社团: ' + (item.get('organizationName') ? item.get('organizationName') : '暂无')}</Text>
-        <br /><Text >{'创刊日期: ' + (item.get('startTime') ? item.get('startTime') : '暂无')}</Text>
-        <br /><Text >{'结刊日期: ' + (item.get('endTime') ? item.get('endTime') : '暂无')}</Text>
+        <br /><Text >{'创刊日期: ' + (item.get('startTime') ? _mm.configTime(item.get('startTime'),item.get('startTimeType')) : '暂无')}</Text>
+        <br /><Text >{'结刊日期: ' + (item.get('endTime') ? _mm.configTime(item.get('endTime'),item.get('endTimeType')) : '暂无')}</Text>
       </div>
       ),
 

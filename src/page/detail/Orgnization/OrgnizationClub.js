@@ -18,11 +18,13 @@ import {
   PEOPLE_TOPIC
 } from 'util/constants'
 import { Descriptions,Carousel,Tabs} from 'antd';
+import MUtil from 'util/mm.js';
+const _mm = new MUtil();
 
 const { TabPane } = Tabs
 export default memo(function OrgnizationClub(props) {
   const { data } = props;
-  const { organization : { name ,nameHistory ,startTime,place,creator,leader,secretariat,member,relatedPeople,logoUrl} ,activities,
+  const { organization : { name ,nameHistory ,startTime, startTimeType, place,creator,leader,secretariat,member,relatedPeople,logoUrl} ,activities,
           constitutions, historicalDataIndexs, journals, literatures, realObjects } = data;
   let imagesList = [];
   constitutions.map((item) => {
@@ -39,7 +41,7 @@ export default memo(function OrgnizationClub(props) {
           <TitleContext>{name}</TitleContext>
           <Descriptions layout="horizontal" column={1} style={{ width: 540}}>
             { creator?<Descriptions.Item label="发起人">{creator}</Descriptions.Item>:''}
-            { startTime?<Descriptions.Item label="创办时间">{startTime}</Descriptions.Item>:''}
+            { startTime?<Descriptions.Item label="创办时间">{_mm.configTime(startTime,startTimeType)}</Descriptions.Item>:''}
             { place?<Descriptions.Item label="创办地点">{place}</Descriptions.Item>:''}
             { nameHistory? <Descriptions.Item label="改名历史">{nameHistory}</Descriptions.Item>:''}
             { leader?<Descriptions.Item label="理事会成员">{leader}</Descriptions.Item>:''}

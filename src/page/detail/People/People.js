@@ -21,6 +21,9 @@ import {
 } from 'util/constants'
 const { TabPane } = Tabs;
 
+import MUtil from 'util/mm.js';
+const _mm = new MUtil();
+
 export default memo(function People(props) {
   const { data } = props;
   const { 
@@ -48,13 +51,13 @@ export default memo(function People(props) {
               <p>所属社团</p>
               {
                 organizations.map((item, index) => {
-                  const { id, name, startTime, creator, leader, secretariat, member } = item
+                  const { id, name, startTime, startTimeType, creator, leader, secretariat, member } = item
                   return <ParaContext key={id} >
                     {`${index + 1}.`}
                     <Link to={`/detail?id=${id}&theme=${ORGANIZATION_TOPIC}`}
                       target="_blank"
                     >{`${name}，`}</Link>
-                    {startTime ? `创办时间：${startTime}，` : ""}
+                    {startTime ? `创办时间：${_mm.configTime(startTime,startTimeType)}，` : ""}
                     {creator ? `发起人： ${creator}，` : ""}
                     {leader ? `理事会：${leader}，` : ""}
                     {secretariat ? `秘书处：${secretariat}，` : ""}
@@ -68,13 +71,13 @@ export default memo(function People(props) {
               <p>相关活动</p>
               {
                 activities.map((item, index) => {
-                  const { id, name, startTime, relationDescription } = item
+                  const { id, name, startTime, startTimeType, relationDescription } = item
                   return <ParaContext key={id} >
                     {`${index + 1}.`}
                     <Link to={`/detail?id=${id}&theme=${ACTIVITY_TOPIC}`}
                       target="_blank"
                     >{`${name}，`}</Link>
-                    {startTime ? `活动时间：${startTime}，` : ""}
+                    {startTime ? `活动时间：${_mm.configTime(startTime,startTimeType)}，` : ""}
                     {relationDescription ? `与人物的关系： ${relationDescription}，` : ""}
                   </ParaContext>
                 })
@@ -88,13 +91,13 @@ export default memo(function People(props) {
               <p>相关期刊</p>
               {
                 journals.map((item, index) => {
-                  const { id, name, startTime, relationDescription } = item
+                  const { id, name, startTime, startTimeType, relationDescription } = item
                   return <ParaContext key={id} >
                     {`${index + 1}.`}
                     <Link to={`/detail?id=${id}&theme=${JOURNAL_TOPIC}`}
                       target="_blank"
                     >{`${name}，`}</Link>
-                    {startTime ? `发刊日期：${startTime}，` : ""}
+                    {startTime ? `发刊日期：${_mm.configTime(startTime,startTimeType)}，` : ""}
                     {relationDescription ? `与人物的关系： ${relationDescription}，` : ""}
                   </ParaContext>
                 })
@@ -105,13 +108,13 @@ export default memo(function People(props) {
               <p>相关实物</p>
               {
                 realObjects.map((item, index) => {
-                  const { id, name, startTime, description,relationDescription } = item
+                  const { id, name, startTime, startTimeType, description,relationDescription } = item
                   return <ParaContext key={id} >
                     {`${index + 1}.`}
                     <Link to={`/detail?id=${id}&theme=${REALOBJECT_TOPIC}`}
                       target="_blank"
                     >{`${name}，`}</Link>
-                    {startTime ? `实物日期：${startTime}，` : ""}
+                    {startTime ? `实物日期：${_mm.configTime(startTime,startTimeType)}，` : ""}
                     {description ? `实物描述：${description}，` : ""}
                     {relationDescription ? `与人物的关系： ${relationDescription}，` : ""}
                   </ParaContext>
@@ -123,13 +126,13 @@ export default memo(function People(props) {
               <p>相关文献</p>
               {
                 literatures.map((item, index) => {
-                  const { id, name, startTime,relationDescription } = item
+                  const { id, name, startTime,startTimeType, relationDescription } = item
                   return <ParaContext key={id} >
                     {`${index + 1}.`}
                     <Link to={`/detail?id=${id}&theme=${LITERATURE_TOPIC}`}
                       target="_blank"
                     >{`${name}，`}</Link>
-                    {startTime ? `文献日期：${startTime}，` : ""}
+                    {startTime ? `文献日期：${_mm.configTime(startTime,startTimeType)}，` : ""}
                     {relationDescription ? `与人物的关系： ${relationDescription}，` : ""}
                   </ParaContext>
                 })
