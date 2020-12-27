@@ -18,14 +18,14 @@ export default memo(function Journal(props) {
     <Fragment>
       <DetailMiddle>
         <TitleContext>{name}</TitleContext>
-        <Descriptions layout="horizontal" column={1} style={{ width: 500 }}>
+        <Descriptions layout="horizontal" column={1} style={{ width: 800 }}>
           {organizationName ? <Descriptions.Item label="所属社团">{organizationName}</Descriptions.Item> : ''}
           {nameHistory ? <Descriptions.Item label="名称沿革">{nameHistory}</Descriptions.Item> : ''}
 
           {startTime ? <Descriptions.Item label="创刊日期">{_mm.configTime(startTime,startTimeType)}</Descriptions.Item> : ''}
-          {endTime ? <Descriptions.Item label="结刊日期">{_mm.configTime(endTime,endTimeType)}</Descriptions.Item> : ''}
+          {endTimeType ? <Descriptions.Item label="结刊日期">{endTimeType == 5 ?'至今': _mm.configTime(endTime,endTimeType)}</Descriptions.Item> : ''}
 
-          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}
+          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' '))}</Descriptions.Item>: ''}
 
           {description ? <Descriptions.Item label="期刊描述">{description}</Descriptions.Item> : ''}
         </Descriptions>

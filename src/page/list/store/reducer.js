@@ -13,6 +13,7 @@ const defualtState = fromJS({
   isdataLoading: true,
   advanceSearch: false,
   theme: ORGANIZATION_TOPIC,
+  totalTheme: 0,
 })
 
 export default ( state=defualtState , action )=>{
@@ -26,6 +27,8 @@ export default ( state=defualtState , action )=>{
       return state.set('advanceSearch',payload)
     case constants.ACTION_SET_THEME:
       return state.set('theme',payload)
+    case constants.ACTION_SET_TOTAL_THEME:
+      return state.set('totalTheme',payload)
     default:
         return state;
 

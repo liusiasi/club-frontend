@@ -93,8 +93,14 @@ class MUtil {
        else if(timeArr[1] == '09') return timeArr[0] +  '年 秋';
        else return  timeArr[0] + '年 冬'
      case 5:
-       return '1886-01-01';
+       return '未知';
    }
+  }
+
+  getDot(name){
+    if(name == null || name == undefined) return '';
+    if(name.indexOf("《") == 0 ) return '.';
+    else return '. ';
   }
 
 }

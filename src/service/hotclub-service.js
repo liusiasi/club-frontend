@@ -4,10 +4,11 @@ import MUtil from 'util/mm.js';
 const _mm = new MUtil();
 
 class HotClub{
-  getClubNumber(){
+  getTotalNumber(theme){
     return _mm.request({
       type: 'post',
       url: `${urlPrefix}/shetuan_officalWebsite/homePage/totalNumber`,
+      data:theme,
     })
   }
   getHotList(){

@@ -18,13 +18,14 @@ export default memo(function RealObject(props) {
     <Fragment>
       <DetailMiddle>
         <TitleContext>{name}</TitleContext>
-        <Descriptions layout="horizontal" column={1} style={{ width: 500 }}>
+        <Descriptions layout="horizontal" column={1} style={{ width: 800 }}>
           {organizationName ? <Descriptions.Item label="所属社团">{organizationName}</Descriptions.Item> : ''}
           {nameHistory ? <Descriptions.Item label="名称沿革">{nameHistory}</Descriptions.Item> : ''}
 
           {createTime ? <Descriptions.Item label="创建日期">{_mm.configTime(createTime, createTimeType)}</Descriptions.Item> : ''}
           {source ? <Descriptions.Item label="来源">{source}</Descriptions.Item> : ''}
-          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}
+          {/* { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''} */}
+          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' '))}</Descriptions.Item>: ''}
           {description ? <Descriptions.Item label="实物描述">{description}</Descriptions.Item> : ''}
         </Descriptions>
         {images.length ? <CarouselContainer title={'图片'} data={images} /> : <span />}

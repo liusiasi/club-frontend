@@ -39,7 +39,7 @@ export default memo(function OrgnizationClub(props) {
       <Fragment>
         <DetailLeftTop>
           <TitleContext>{name}</TitleContext>
-          <Descriptions layout="horizontal" column={1} style={{ width: 540}}>
+          <Descriptions layout="horizontal" column={1} style={{ width: 580}}>
             { creator?<Descriptions.Item label="发起人">{creator}</Descriptions.Item>:''}
             { startTime?<Descriptions.Item label="创办时间">{_mm.configTime(startTime,startTimeType)}</Descriptions.Item>:''}
             { place?<Descriptions.Item label="创办地点">{place}</Descriptions.Item>:''}
@@ -64,7 +64,7 @@ export default memo(function OrgnizationClub(props) {
                 <ParaContext  key={item.id} >
                   <Link to={`/detail?id=${item.id}&theme=${ACTIVITY_TOPIC}`}
                     target="_blank"
-                  >{`${index+1}.${item.name}`}</Link>
+                  >{`${index+1}${_mm.getDot(item.name)}${item.name}`}</Link>
                 </ParaContext> 
               ) ):<ParaContext>暂无</ParaContext> 
             } 
@@ -75,7 +75,7 @@ export default memo(function OrgnizationClub(props) {
                 <ParaContext  key={item.id} >
                   <Link to={`/detail?id=${item.id}&theme=${JOURNAL_TOPIC}`}
                     target="_blank"
-                  >{`${index+1}.${item.name}`}</Link>
+                  >{`${index+1}${_mm.getDot(item.name)}${item.name}`}</Link>
                 </ParaContext> 
               ) ):<ParaContext>暂无</ParaContext> 
             } 
@@ -86,7 +86,7 @@ export default memo(function OrgnizationClub(props) {
                 <ParaContext  key={item.id} >
                   <Link to={`/detail?id=${item.id}&theme=${REALOBJECT_TOPIC}`}
                     target="_blank"
-                  >{`${index+1}.${item.name}`}</Link>
+                  >{`${index+1}${_mm.getDot(item.name)}${item.name}`}</Link>
                 </ParaContext> 
               ) ):<ParaContext>暂无</ParaContext> 
             } 
@@ -97,9 +97,9 @@ export default memo(function OrgnizationClub(props) {
                 <ParaContext   key={item.id}>
                   <Link to={`/detail?id=${item.peopleId}&theme=${PEOPLE_TOPIC}`}
                     target="_blank"
-                  >{`${index+1}.${item.peopleName}`}
+                  >{`${index+1}${_mm.getDot(item.peopleName)}${item.peopleName}`}
                   </Link>
-                  {item.relationDescription?`,${item.relationDescription}`:''}
+                  {/* {item.relationDescription?`,${item.relationDescription}`:''} */}
                 </ParaContext> 
               ) ):<ParaContext>暂无</ParaContext> 
             } 
@@ -110,7 +110,7 @@ export default memo(function OrgnizationClub(props) {
                 <ParaContext  key={item.id}>
                   <Link to={`/detail?id=${item.id}&theme=${LITERATURE_TOPIC}`}
                     target="_blank"
-                  >{`${index+1}.${item.name}`}</Link>
+                  >{`${index+1}${_mm.getDot(item.name)}${item.name}`}</Link>
                 </ParaContext> 
               ) ):<ParaContext>暂无</ParaContext> 
             } 
@@ -121,7 +121,7 @@ export default memo(function OrgnizationClub(props) {
                 <ParaContext key={item.id} >
                   <Link to={`/detail?id=${item.id}&theme=${HISTORICALINDEX_TOPIC}`}
                     target="_blank"
-                  >{`${index+1}.${item.name}`}</Link>
+                  >{`${index+1}${_mm.getDot(item.name)}${item.name}`}</Link>
                 </ParaContext> 
               ) ):<ParaContext>暂无</ParaContext> 
             } 

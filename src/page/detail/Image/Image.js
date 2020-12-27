@@ -21,7 +21,7 @@ export default memo(function Image(props) {
           {photographer ? <Descriptions.Item label="拍摄者">{photographer}</Descriptions.Item> : ''}
 
           {createTime ? <Descriptions.Item label="拍摄日期">{_mm.configTime(createTime, createTimeType)}</Descriptions.Item> : ''}
-          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' : '+(item.description) + ' ; '))}</Descriptions.Item>: ''}
+          { relatedPeople.length?<Descriptions.Item label="相关人物">{ relatedPeople.map((item) =>( (item.peopleName)+' '))}</Descriptions.Item>: ''}
           {description ? <Descriptions.Item label="相关描述">{description}</Descriptions.Item> : ''}
         </Descriptions> 
       </DetailMiddle>

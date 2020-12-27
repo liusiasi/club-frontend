@@ -7,6 +7,9 @@ export const DetailWrapper = styled.div`
   border: 1px solid #e5e5e5;
   padding: 30px 30px 0;
   background: #fff;
+  .ant-descriptions-item > span {
+    display: inline;
+  }
 `
 
 

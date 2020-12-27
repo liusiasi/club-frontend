@@ -6,7 +6,7 @@ export const TitleContext = styled.div`
   font-size: 34px;
   line-height: 35px;
   margin-bottom: 25px;
-  width:500px;
+  width:580px;
 `
 
 export const DetailLeftTop = styled.div`
@@ -19,7 +19,7 @@ export const DetailLeftTop = styled.div`
 export const CarouselRightTop = styled.div`
   position:absolute;
   width: 250px;
-  right: 100px;
+  right: 50px;
   top:10px;
   .ant-carousel .slick-slide {
     text-align: center;

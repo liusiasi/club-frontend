@@ -1,18 +1,18 @@
 import React, { Component,Fragment } from 'react';
 import {
   HomeWraper,
-  ContainsNumber
 } from './style';
 import Footer from 'common/footer';
 import SearchInput from 'component/search-input/index';
 import CommonList from 'component/common-list/index';
+import TotalTheme from 'component/total-theme/index';
 import { connect } from 'react-redux';
 import {
   bindActionCreators,
 } from 'redux'
 import {
-  gettotalNumber,
-  gethotClub
+  getTotalNumber,
+  getHotClub
 } from './store/actionCreator'
 import {
   setTheme
@@ -20,6 +20,11 @@ import {
 import {
   toggleSearch
 } from '../list/store/actionCreator';
+import {
+  ORGANIZATION_TOPIC,
+  themeTotal
+} from 'util/constants'
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -30,10 +35,14 @@ class Home extends Component {
   }
   componentDidMount(){
     document.title = "社团数据知识服务平台";
-    const { gettotalNumber,gethotClub } = this.props;
-    gettotalNumber();
-    gethotClub();
-
+    const { getTotalNumber,getHotClub,setTheme, advanceSearch, toggleSearch } = this.props;
+    /** 如果是高级检索的话，恢复为普通检索 */
+    (advanceSearch === true) && toggleSearch();
+    setTheme(ORGANIZATION_TOPIC);
+    getTotalNumber({
+      theme: themeTotal[ORGANIZATION_TOPIC]
+    });
+    getHotClub();
   }
 
   handleSearch = (payload) => {
@@ -47,21 +56,36 @@ class Home extends Component {
     this.props.history.push(`/list?${params}`);
   }
   handleReset =() =>{
-    
+
+  }
+
+  /**修改主题也会出发搜索 */
+  changeTheme =(theme) => {
+    let payload = {};
+    payload.theme = theme;
+    payload.advanceSearch = this.props.advanceSearch;
+    payload.rows = 10;
+    payload.page = 1;
+    const params = Object.keys(payload).filter( k => payload[k] !== undefined && payload[k].length !== 0)
+    .map(k => k + '=' + payload[k])
+    .join('&');
+    this.props.history.push(`/list?${params}`);
   }
   render() {
-    const { advanceSearch,toggleSearch,setTheme,data,theme } = this.props;
+    const { advanceSearch,toggleSearch,totalNumber,data,theme } = this.props;
     return (
       <Fragment>
         <HomeWraper>
-          <ContainsNumber className='title'>中国近现代科技社团</ContainsNumber>
-          <ContainsNumber className='nums'>收录了{this.props.totalNumber}条社团信息</ContainsNumber>
+          <TotalTheme
+            theme={theme}
+            totalNumber={totalNumber}
+          />
           <SearchInput 
             toggleSearch={toggleSearch}
             submitSearchValue={this.handleSearch}
             theme={theme}
             advanceSearch={advanceSearch}
-            changeTheme = {(val)=>setTheme(val)}
+            changeTheme = {this.changeTheme}
           /> 
           <CommonList data={data} current={1} pageSize={10} theme="社团"/>
         </HomeWraper>
@@ -80,8 +104,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    gettotalNumber,
-    gethotClub,
+    getTotalNumber,
+    getHotClub,
     toggleSearch,
     setTheme,
   },dispatch)

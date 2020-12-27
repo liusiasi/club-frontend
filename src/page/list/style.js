@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
+/**这里为了解决margin塌陷问题 加了一个border */
 export const ListWrapper = styled.div`
   width : 1000px;
   margin: 0 auto;
+  border: 1px solid rgba(0, 0, 0, 0);
 
 `
 

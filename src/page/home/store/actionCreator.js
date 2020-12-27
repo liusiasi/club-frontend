@@ -5,22 +5,23 @@ import HotClub from 'service/hotclub-service';
 
 const _hotclub = new HotClub();
 
-const sethotClub = (data) =>({
+const setHotClub = (data) =>({
   type: constants.ACTION_SET_HOT_CLUB,
   payload: fromJS(data),
 });
 
-export const settotalNumber = (nums) =>({
+export const setTotalNumber = (nums) =>({
   type: constants.ACTION_SET_TOTAL_NUMBER,
   payload: nums,
 });
 
 
-export const gettotalNumber = () => {
+export const getTotalNumber = (theme) => {
   return (dispatch) => {
-    _hotclub.getClubNumber().then(res => {
+    console.log(theme);
+    _hotclub.getTotalNumber(theme).then(res => {
         if( res.success && res.obj != null ){
-            dispatch(settotalNumber(res.obj));
+            dispatch(setTotalNumber(res.obj));
           }
         }, errMsg => {
           console.log(errMsg);
@@ -28,11 +29,11 @@ export const gettotalNumber = () => {
     }
 }
 
-export const gethotClub = () => {
+export const getHotClub = () => {
   return (dispatch) => {
     _hotclub.getHotList().then(res => {
       if( res.success && res.obj != null ){
-        dispatch(sethotClub(res.obj));
+        dispatch(setHotClub(res.obj));
       }
     }, errMsg => {
       console.log(errMsg);

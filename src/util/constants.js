@@ -6,4 +6,16 @@ export const HISTORICALINDEX_TOPIC = '史料'
 export const JOURNAL_TOPIC = '期刊'
 export const IMAGE_TOPIC = '图片'
 export const VIDEO_TOPIC = '视频'
+export const AUDIO_TOPIC = '音频'
 export const PEOPLE_TOPIC = '人物'
+
+export const themeTotal = {
+    [ORGANIZATION_TOPIC]: 1,
+    [ACTIVITY_TOPIC]: 2,
+    [LITERATURE_TOPIC]: 3,
+    [HISTORICALINDEX_TOPIC]: 4,
+    [JOURNAL_TOPIC]: 5,
+    [PEOPLE_TOPIC]: 6,
+    [IMAGE_TOPIC]: 7,
+    [VIDEO_TOPIC]: 8,
+  }

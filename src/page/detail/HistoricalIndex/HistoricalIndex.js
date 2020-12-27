@@ -18,7 +18,7 @@ export default memo(function HistoricalIndex(props) {
     <Fragment>
       <DetailMiddle>
         <TitleContext>{name}</TitleContext>
-        <Descriptions layout="horizontal" column={1} style={{ width: 500 }}>
+        <Descriptions layout="horizontal" column={1} style={{ width: 800 }}>
           {organizationName ? <Descriptions.Item label="所属社团">{organizationName}</Descriptions.Item> : ''}
           {createTime ? <Descriptions.Item label="史料日期">{_mm.configTime(createTime, createTimeType)}</Descriptions.Item> : ''}
 

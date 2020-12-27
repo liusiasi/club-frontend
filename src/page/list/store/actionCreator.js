@@ -2,6 +2,7 @@ import * as constants from './constants'
 import { fromJS } from 'immutable'
 import ListService from 'service/list-service';
 
+
 const defaultData = {
   result: [],
   pageSize: null,
@@ -10,6 +11,7 @@ const defaultData = {
 }
 
 const _listservice = new ListService();
+
 
 const setTableList = ( data) => ({
   type: constants.ACTION_SET_PAGE_List,
@@ -20,6 +22,13 @@ const setLoading= ( data) => ({
   type: constants.ACTION_SET_LOADING,
   payload: data,
 })
+
+
+export const setTotalTheme = (nums) =>({
+  type: constants.ACTION_SET_TOTAL_THEME,
+  payload: nums,
+});
+
 
 export const toggleSearch = () => {
   return (dispatch,getState) => {

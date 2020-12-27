@@ -111,7 +111,7 @@ class ListSearch extends PureComponent {
           }
         </SearchContent>
 
-        <NavItem className='right active' onClick={this.onSearchTypeChange}>{theme}检索</NavItem>
+        <NavItem className='right active' onClick={this.onSearchTypeChange}>{advanceSearch == true ?"普通检索":"高级检索"}</NavItem>
 
       </SearchWraper>
     )

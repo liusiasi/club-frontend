@@ -4,7 +4,7 @@ export const TitleContext = styled.div`
   font-size: 34px;
   line-height: 35px;
   margin-bottom: 25px;
-  width:500px;
+  width:930px;
 `
 
 export const DetailMiddle = styled.div`

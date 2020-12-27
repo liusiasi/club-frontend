@@ -10,7 +10,6 @@ const setMsg = ( data) => ({
 
 export const handleSuppelemnt = (data) => {
   return (dispatch) => {
-    console.log(data);
     return _supplementservice.submitSupplement(data).then(res => {
       if( res ){
         dispatch(setMsg(res));

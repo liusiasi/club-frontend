@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchInput from 'component/search-input/index';
+import TotalTheme from 'component/total-theme/index';
 
 import {
   ListWrapper,
@@ -23,6 +24,9 @@ import {
   setTheme
 } from './store/actionCreator';
 import {
+  getTotalNumber
+} from '../home/store/actionCreator'
+import {
   ORGANIZATION_TOPIC,
   ACTIVITY_TOPIC,
   LITERATURE_TOPIC,
@@ -31,6 +35,7 @@ import {
   IMAGE_TOPIC,
   VIDEO_TOPIC,
   PEOPLE_TOPIC,
+  themeTotal
 } from 'util/constants'
 import CommonList from 'component/common-list/index';
 
@@ -49,12 +54,18 @@ class SearchList extends Component {
     [VIDEO_TOPIC]: this.props.getVideolList,
   }
 
+
+
   componentDidMount() {
     document.title = "社团数据知识服务平台";
     const query = URI.parseQuery(this.props.location.search);
     const { advanceSearch,theme } = query;
-    this.props.setSearch(advanceSearch === 'true');
-    this.props.setTheme(theme);
+    const { setSearch, setTheme, getTotalNumber} = this.props;
+    setSearch(advanceSearch === 'true');
+    setTheme(theme);
+    getTotalNumber({
+      theme: themeTotal[theme]
+    });
     query.advanceSearch = (advanceSearch === 'true');
     this.getCommonList({
       ...query,
@@ -102,7 +113,11 @@ class SearchList extends Component {
   /*切换主题的时候将父组件的暂存state清空
    */
   changeTheme = (theme) => {
-    this.props.setTheme(theme);
+    const {setTheme, getTotalNumber} = this.props
+    setTheme(theme);
+    getTotalNumber({
+      theme: themeTotal[theme]
+    });
     const state = {};
     Object.keys(this.state).map(key => state[key] = undefined)
     state.theme = theme
@@ -129,10 +144,13 @@ class SearchList extends Component {
   }
 
   render() {
-    const { result, total, pageSize, pageNumber, isdataLoading , theme, advanceSearch} = this.props;
-    console.log(isdataLoading+'loading');
+    const { result, total, pageSize, pageNumber, isdataLoading , theme, advanceSearch, totalNumber} = this.props;
     return (
         <ListWrapper>
+          <TotalTheme
+            theme={theme}
+            totalNumber={totalNumber}
+          />
           <SearchInput 
             {...this.state}
             theme={theme}
@@ -156,6 +174,7 @@ class SearchList extends Component {
   }
 }
 const mapStateToProps = (state) => ({
+  totalNumber: state.getIn(['home','totalNumber']),
   result: state.getIn(['list','data','result']),
   total: state.getIn(['list','data','total']),
   pageSize: state.getIn(['list','data','pageSize']),
@@ -176,7 +195,8 @@ const mapDispatchToProps = (dispatch) => {
     getImagelList,
     getVideolList,
     setSearch,
-    setTheme
+    setTheme,
+    getTotalNumber,
   },dispatch)
 }
 export default connect(mapStateToProps,mapDispatchToProps)(SearchList);
