@@ -54,7 +54,7 @@ export default memo(function People(props) {
               <p>所属社团</p>
               {
                 organizations.map((item, index) => {
-                  const { id, name, startTime, startTimeType, creator, leader, secretariat, member } = item
+                  const { id, name } = item
                   return <ParaContext key={id} >
                     {`${index + 1}${_mm.getDot(name)}`}
                     <Link to={`/detail?id=${id}&theme=${ORGANIZATION_TOPIC}`}
@@ -74,7 +74,7 @@ export default memo(function People(props) {
               <p>相关活动</p>
               {
                 activities.map((item, index) => {
-                  const { id, name, startTime, startTimeType, relationDescription } = item
+                  const { id, name } = item
                   return <ParaContext key={id} >
                     {`${index + 1}${_mm.getDot(name)}`}
                     <Link to={`/detail?id=${id}&theme=${ACTIVITY_TOPIC}`}
@@ -94,7 +94,7 @@ export default memo(function People(props) {
               <p>相关期刊</p>
               {
                 journals.map((item, index) => {
-                  const { id, name, startTime, startTimeType, relationDescription } = item
+                  const { id, name } = item
                   return <ParaContext key={id} >
                     {`${index + 1}${_mm.getDot(name)}`}
                     <Link to={`/detail?id=${id}&theme=${JOURNAL_TOPIC}`}
@@ -111,7 +111,7 @@ export default memo(function People(props) {
               <p>相关实物</p>
               {
                 realObjects.map((item, index) => {
-                  const { id, name, startTime, startTimeType, description,relationDescription } = item
+                  const { id, name } = item
                   return <ParaContext key={id} >
                     {`${index + 1}${_mm.getDot(name)}`}
                     <Link to={`/detail?id=${id}&theme=${REALOBJECT_TOPIC}`}
@@ -129,7 +129,7 @@ export default memo(function People(props) {
               <p>相关文献</p>
               {
                 literatures.map((item, index) => {
-                  const { id, name, startTime,startTimeType, relationDescription } = item
+                  const { id, name } = item
                   return <ParaContext key={id} >
                     {`${index + 1}${_mm.getDot(name)}`}
                     <Link to={`/detail?id=${id}&theme=${LITERATURE_TOPIC}`}
