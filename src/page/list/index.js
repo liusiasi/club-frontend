@@ -101,7 +101,7 @@ class SearchList extends Component {
     this.getCommonList({
       ...payload,
     });
-  }
+  } 
 
   handleReset = (payload) => {
     payload.advanceSearch = this.props.advanceSearch;
