@@ -15,6 +15,21 @@ export const ListWrapper = styled.div`
   .ant-typography.ant-typography-secondary {
     color:#f05000;
   }
+  .ant-list-item-meta-title,.ant-list-item-meta-description
+  {
+    font-size: 16px;
+  }
+  .ant-pagination-total-text,
+  .ant-pagination-item a,
+  .ant-select-single.ant-select-show-arrow .ant-select-selection-item, .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder,
+  .ant-pagination-options-quick-jumper,
+  .ant-pagination-options-quick-jumper input
+  {
+    font-size: 15px;
+  }
+  .ant-list-pagination .ant-pagination-options {
+    margin-top: 6px;
+  }
 `
 
 export const MetaWrapper = styled.div`

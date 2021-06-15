@@ -6,6 +6,9 @@ import React, {
 import { Form } from '@ant-design/compatible';
 import '@ant-design/compatible/assets/index.css';
 
+
+
+
 import { Input, Button, DatePicker, Select } from 'antd';
 import {
   ORGANIZATION_TOPIC,
@@ -24,16 +27,20 @@ const { RangePicker } = DatePicker;
 
 
 const OrgnizationSearch = memo(function Search(props) {
-  const { handleFormReset, name, creator, place, startTime,endTime, onSearch, FormReset } = props;
+  const { handleFormReset, name, creator, place, startTime, endTime, onSearch, FormReset } = props;
   const { getFieldDecorator } = props.form;
   useEffect(() => {
     return () => {
       FormReset();
+      const { form } = props;
+      const values = form.getFieldsValue();
+      values.time = [];
+      form.setFieldsValue(values);
     }
   }, [])
   return (
     <div>
-      <Form onSubmit={onSearch} layout="inline">
+      <Form onSubmit={onSearch} layout="inline" size='large'>
         <FormItem label="社团名称">
           {getFieldDecorator('name', {
             initialValue: name
@@ -45,7 +52,7 @@ const OrgnizationSearch = memo(function Search(props) {
           {getFieldDecorator('creator', {
             initialValue: creator
           })(
-            <Input placeholder="请输入发起人" style={{ width: 160 }} />
+            <Input placeholder="请输入发起人" style={{ width: 150 }} />
           )}
         </FormItem>
         <FormItem label="创办地点">
@@ -57,14 +64,14 @@ const OrgnizationSearch = memo(function Search(props) {
         </FormItem>
         <FormItem label="创办时间">
           {getFieldDecorator('time', {
-            initialValue:  [startTime?moment(startTime):undefined,endTime?moment(endTime):undefined]
+            initialValue: [startTime ? moment(startTime) : undefined, endTime ? moment(endTime) : undefined]
           })(
-            <RangePicker placeholder={["开始日期", "结束日期"]} style={{ width: 260 }} />
+              <RangePicker placeholder={["开始日期", "结束日期"]} style={{ width: 260 }} />
           )}
         </FormItem>
         <span>
           <Button type="primary" onClick={onSearch}>搜索</Button>
-          <Button style={{ marginLeft: 8 , marginTop: 4}} onClick={handleFormReset}>重置</Button>
+          <Button style={{ marginLeft: 8, marginTop: 4 }} onClick={handleFormReset}>重置</Button>
         </span>
       </Form>
     </div>
@@ -72,11 +79,15 @@ const OrgnizationSearch = memo(function Search(props) {
 })
 
 const ActivitySearch = memo(function Search(props) {
-  const { handleFormReset, name, type, place, startTime,endTime, organizationName, onSearch, FormReset } = props;
+  const { handleFormReset, name, type, place, startTime, endTime, organizationName, onSearch, FormReset } = props;
   const { getFieldDecorator } = props.form;
   useEffect(() => {
     return () => {
       FormReset();
+      const { form } = props;
+      const values = form.getFieldsValue();
+      values.time = [];
+      form.setFieldsValue(values);
     }
   }, [])
   return (
@@ -86,18 +97,18 @@ const ActivitySearch = memo(function Search(props) {
           {getFieldDecorator('name', {
             initialValue: name
           })(
-            <Input placeholder="请输入活动名称名称" style={{ width: 160 }} />
+            <Input placeholder="请输入活动名称" style={{ width: 160 }} />
           )}
         </FormItem>
         <FormItem label="活动类型">
           {getFieldDecorator('type', {
             initialValue: type !== undefined ? parseInt(type) : undefined
           })(
-            <Select style={{ width: 160 }} >
-              <Option value={1}>学术活动</Option>
-              <Option value={2}>科普活动</Option>
-              <Option value={3}>实业活动</Option>
-              <Option value={4}>其他活动</Option>
+            <Select style={{ width: 120, fontSize:16 }} dropdownStyle={{fontSize: 16}}>
+              <Option style={{fontSize: 16}} value={1}>学术活动</Option>
+              <Option style={{fontSize: 16}} value={2}>科普活动</Option>
+              <Option style={{fontSize: 16}} value={3}>实业活动</Option>
+              <Option style={{fontSize: 16}} value={4}>其他活动</Option>
             </Select>
           )}
         </FormItem>
@@ -105,7 +116,7 @@ const ActivitySearch = memo(function Search(props) {
           {getFieldDecorator('organizationName', {
             initialValue: organizationName
           })(
-            <Input placeholder="请输入所属社团名称" style={{ width: 160 }} />
+            <Input placeholder="请输入所属社团名称" style={{ width: 175 }} />
           )}
         </FormItem>
         <FormItem label="活动地点">
@@ -117,9 +128,9 @@ const ActivitySearch = memo(function Search(props) {
         </FormItem>
         <FormItem label="活动时间">
           {getFieldDecorator('time', {
-            initialValue:  [startTime?moment(startTime):undefined,endTime?moment(endTime):undefined]
+            initialValue: [startTime ? moment(startTime) : undefined, endTime ? moment(endTime) : undefined]
           })(
-            <RangePicker placeholder={["开始日期", "结束日期"]} style={{ width: 220 }} />
+            <RangePicker placeholder={["开始日期", "结束日期"]} style={{ width: 260 }} />
           )}
         </FormItem>
         <span>
@@ -132,11 +143,15 @@ const ActivitySearch = memo(function Search(props) {
 })
 
 const LiteratureSearch = memo(function Search(props) {
-  const { handleFormReset, name, type, startTime,endTime,  organizationName, onSearch, FormReset } = props;
+  const { handleFormReset, name, type, startTime, endTime, organizationName, onSearch, FormReset } = props;
   const { getFieldDecorator } = props.form;
   useEffect(() => {
     return () => {
       FormReset();
+      const { form } = props;
+      const values = form.getFieldsValue();
+      values.time = [];
+      form.setFieldsValue(values);
     }
   }, [])
   return (
@@ -153,9 +168,9 @@ const LiteratureSearch = memo(function Search(props) {
           {getFieldDecorator('type', {
             initialValue: type !== undefined ? parseInt(type) : undefined
           })(
-            <Select style={{ width: 160 }} >
-              <Option value={1}>原始文献</Option>
-              <Option value={2}>研究文献</Option>
+            <Select style={{ width: 120 }} >
+              <Option style={{fontSize: 16}} value={1}>原始文献</Option>
+              <Option style={{fontSize: 16}} value={2}>研究文献</Option>
             </Select>
           )}
         </FormItem>
@@ -163,12 +178,12 @@ const LiteratureSearch = memo(function Search(props) {
           {getFieldDecorator('organizationName', {
             initialValue: organizationName
           })(
-            <Input placeholder="请输入所属社团名称" style={{ width: 160 }} />
+            <Input placeholder="请输入所属社团名称" style={{ width: 175 }} />
           )}
         </FormItem>
         <FormItem label="文献日期">
           {getFieldDecorator('time', {
-            initialValue:  [startTime?moment(startTime):undefined,endTime?moment(endTime):undefined]
+            initialValue: [startTime ? moment(startTime) : undefined, endTime ? moment(endTime) : undefined]
           })(
             <RangePicker placeholder={["开始日期", "结束日期"]} style={{ width: 260 }} />
           )}
@@ -183,33 +198,37 @@ const LiteratureSearch = memo(function Search(props) {
 })
 
 const HistoricalSearch = memo(function Search(props) {
-  const { handleFormReset, name, startTime,endTime,  organizationName, onSearch, FormReset } = props;
+  const { handleFormReset, name, startTime, endTime, organizationName, onSearch, FormReset } = props;
   const { getFieldDecorator } = props.form;
   useEffect(() => {
     return () => {
       FormReset();
+      const { form } = props;
+      const values = form.getFieldsValue();
+      values.time = [];
+      form.setFieldsValue(values);
     }
   }, [])
   return (
     <div>
       <Form onSubmit={onSearch} layout="inline">
-        <FormItem label="史料名称">
+        <FormItem label="索引名称">
           {getFieldDecorator('name', {
             initialValue: name
           })(
-            <Input placeholder="请输入史料名称" style={{ width: 160 }} />
+            <Input placeholder="请输入索引名称" style={{ width: 160 }} />
           )}
         </FormItem>
         <FormItem label="社团名称">
           {getFieldDecorator('organizationName', {
             initialValue: organizationName
           })(
-            <Input placeholder="请输入所属社团名称" style={{ width: 160 }} />
+            <Input placeholder="请输入所属社团名称" style={{ width: 175 }} />
           )}
         </FormItem>
-        <FormItem label="史料日期">
+        <FormItem label="索引日期">
           {getFieldDecorator('time', {
-            initialValue:  [startTime?moment(startTime):undefined,endTime?moment(endTime):undefined]
+            initialValue: [startTime ? moment(startTime) : undefined, endTime ? moment(endTime) : undefined]
           })(
             <RangePicker placeholder={["开始日期", "结束日期"]} style={{ width: 260 }} />
           )}
@@ -224,11 +243,15 @@ const HistoricalSearch = memo(function Search(props) {
 })
 
 const JournalSearch = memo(function Search(props) {
-  const { handleFormReset, name, startTime,endTime,  organizationName, onSearch, FormReset } = props;
+  const { handleFormReset, name, startTime, endTime, organizationName, onSearch, FormReset } = props;
   const { getFieldDecorator } = props.form;
   useEffect(() => {
     return () => {
       FormReset();
+      const { form } = props;
+      const values = form.getFieldsValue();
+      values.time = [];
+      form.setFieldsValue(values);
     }
   }, [])
   return (
@@ -245,12 +268,12 @@ const JournalSearch = memo(function Search(props) {
           {getFieldDecorator('organizationName', {
             initialValue: organizationName
           })(
-            <Input placeholder="请输入所属社团名称" style={{ width: 160 }} />
+            <Input placeholder="请输入所属社团名称" style={{ width: 175 }} />
           )}
         </FormItem>
         <FormItem label="创刊日期">
           {getFieldDecorator('time', {
-            initialValue:  [startTime?moment(startTime):undefined,endTime?moment(endTime):undefined]
+            initialValue: [startTime ? moment(startTime) : undefined, endTime ? moment(endTime) : undefined]
           })(
             <RangePicker placeholder={["开始日期", "结束日期"]} style={{ width: 260 }} />
           )}
@@ -270,6 +293,10 @@ const ImageSearch = memo(function Search(props) {
   useEffect(() => {
     return () => {
       FormReset();
+      const { form } = props;
+      const values = form.getFieldsValue();
+      values.time = [];
+      form.setFieldsValue(values);
     }
   }, [])
   return (
@@ -286,14 +313,14 @@ const ImageSearch = memo(function Search(props) {
           {getFieldDecorator('organizationName', {
             initialValue: organizationName
           })(
-            <Input placeholder="请输入所属社团名称" style={{ width: 160 }} />
+            <Input placeholder="请输入所属社团名称" style={{ width: 175 }} />
           )}
         </FormItem>
         <FormItem label="人物名称">
           {getFieldDecorator('peopleName', {
             initialValue: peopleName
           })(
-            <Input placeholder="请输入相关人物名称" style={{ width: 160 }} />
+            <Input placeholder="请输入相关人物名称" style={{ width: 175 }} />
           )}
         </FormItem>
         <span>
@@ -306,11 +333,15 @@ const ImageSearch = memo(function Search(props) {
 })
 
 const VideoSearch = memo(function Search(props) {
-  const { handleFormReset, name, peopleName,  organizationName, onSearch, FormReset } = props;
+  const { handleFormReset, name, peopleName, organizationName, onSearch, FormReset } = props;
   const { getFieldDecorator } = props.form;
   useEffect(() => {
     return () => {
       FormReset();
+      const { form } = props;
+      const values = form.getFieldsValue();
+      values.time = [];
+      form.setFieldsValue(values);
     }
   }, [])
   return (
@@ -327,14 +358,14 @@ const VideoSearch = memo(function Search(props) {
           {getFieldDecorator('organizationName', {
             initialValue: organizationName
           })(
-            <Input placeholder="请输入所属社团名称" style={{ width: 160 }} />
+            <Input placeholder="请输入所属社团名称" style={{ width: 175 }} />
           )}
         </FormItem>
         <FormItem label="人物名称">
           {getFieldDecorator('peopleName', {
             initialValue: peopleName
           })(
-            <Input placeholder="请输入相关人物名称" style={{ width: 160 }} />
+            <Input placeholder="请输入相关人物名称" style={{ width: 175 }} />
           )}
         </FormItem>
         <span>
@@ -352,6 +383,10 @@ const PeopleSearch = memo(function Search(props) {
   useEffect(() => {
     return () => {
       FormReset();
+      const { form } = props;
+      const values = form.getFieldsValue();
+      values.time = [];
+      form.setFieldsValue(values);
     }
   }, [])
   return (
@@ -368,7 +403,7 @@ const PeopleSearch = memo(function Search(props) {
           {getFieldDecorator('organizationName', {
             initialValue: organizationName
           })(
-            <Input placeholder="请输入所属社团名称" style={{ width: 160 }} />
+            <Input placeholder="请输入所属社团名称" style={{ width: 175 }} />
           )}
         </FormItem>
         <span>
@@ -401,13 +436,15 @@ const AdvanceSearch = memo(function Search(props) {
     Object.keys(values).map(key => values[key] = undefined)
     values.startTime = undefined;
     values.endTime = undefined;
+    values.time = [];
     form.setFieldsValue(values);
     handleSearch(values);
   }
   const FormReset = () => {
     const { form } = props;
     const values = form.getFieldsValue();
-    Object.keys(values).map(key => values[key] = undefined)
+    Object.keys(values).map(key => values[key] = undefined);
+    values.time = [];
     values.startTime = undefined;
     values.endTime = undefined;
     form.setFieldsValue(values);
@@ -418,7 +455,7 @@ const AdvanceSearch = memo(function Search(props) {
     const { form } = props;
     const values = form.getFieldsValue();
     if (values.time !== undefined && values.time.length && values.time[0]) {
-      if (theme === ORGANIZATION_TOPIC) {   
+      if (theme === ORGANIZATION_TOPIC) {
         let startTime = values.time[0].toISOString().slice(0, 10);
         let endTime = values.time[1].toISOString().slice(0, 10);
         values.startTime = startTime;

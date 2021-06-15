@@ -15,17 +15,25 @@ export const SearchRadio = styled.div`
 `
 export const SearchContent = styled.div`
   height: 90px;
-  width: 750px;
+  width: 760px;
   .ant-form .ant-btn {
     margin-top:5px;
   }
+  .ant-legacy-form label {
+    font-size: 16px;
+  }
+  .ant-input,.ant-picker-input > input,.ant-select {
+    font-size: 16px;
+  }
   .ant-btn{
-
+    font-size: 16px;
+    margin-top: 2px;
+    height: 34px;
   }
 `
 export const NavItem = styled.div`
   position: absolute;
-  right:0;
+  right:-10px;
   top: 50px;
   line-height: 40px;
   color: #333;

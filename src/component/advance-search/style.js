@@ -8,7 +8,7 @@ export const SearchRadio = styled.div`
   height: 40px;
   margin: 10px auto;
   .ant-radio-button-wrapper {
-    width: 90px;
+    width: 92px;
   }
 `
 export const SearchInput = styled.div`
@@ -16,16 +16,16 @@ export const SearchInput = styled.div`
   margin: 10px auto;
 `
 export const NavItem = styled.div`
-  padding: 0 15px;
+  padding: 0 93px 0px 0px;
   line-height: 40px;
   color: #333;
   &.left {
     float: left;
-    font-size: 20px;
+    font-size: 22px;
   }
   &.right {
     float: right;
-    font-size: 15px;
+    font-size: 18px;
   }
   cursor: pointer;
   &:hover {

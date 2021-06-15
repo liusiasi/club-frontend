@@ -10,6 +10,9 @@ export const DetailWrapper = styled.div`
   .ant-descriptions-item > span {
     display: inline;
   }
+  .ant-descriptions-item-label,.ant-descriptions-item-content,.ant-tabs-nav .ant-tabs-tab {
+    font-size: 16px;
+  }
 `
 
 

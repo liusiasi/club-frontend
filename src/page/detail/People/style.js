@@ -22,11 +22,12 @@ export const ParaSection = styled.section`
     text-align: center;
     font-weight: bold;
     line-height: 35px;
+    font-size: 16px;
   }
 `
 
 export const ParaContext = styled.p`
-  font-size: 14px;
+  font-size: 16px; 
   font-family: Microsoft YaHei,SimHei,Verdana;
   word-wrap: break-word;
   line-height: 24px;

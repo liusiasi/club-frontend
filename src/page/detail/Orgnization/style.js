@@ -18,13 +18,14 @@ export const DetailLeftTop = styled.div`
 `
 export const CarouselRightTop = styled.div`
   position:absolute;
-  width: 250px;
-  right: 50px;
-  top:10px;
+  width: 330px;
+  right: 20px;
+  top:20px;
+  border: 1px solid #e5e5e5;
   .ant-carousel .slick-slide {
     text-align: center;
-    height: 160px;
-    line-height: 160px;
+    height: 220px;
+    line-height: 240px;
     background: #364d79;
     overflow: hidden;
   }
@@ -41,9 +42,40 @@ export const CarouselRightTop = styled.div`
   }
 
   .ant-carousel .slick-slide img {
-    height:160px;
-    width: 250px;
+    height:220px;
+    width: 330px;
   }
+
+  .anticon {
+    display : none;
+    background-color: #efefef;
+    width: 20px;
+    height: 30px;
+    line-height: 32px;
+  }
+
+  &:hover .anticon {
+    display : inline-block;
+  }
+
+`
+
+export const CarouselRight= styled.div`
+    top: 100px;
+    right: 0px;
+    position: absolute;
+    z-index: 1000;
+    cursor:pointer;
+    opacity: 0.5;
+`
+
+export const CarouselLeft= styled.div`
+    top: 100px;
+    left: 0px;
+    position: absolute;
+    z-index: 1000;
+    cursor:pointer;
+    opacity: 0.5;
 `
 
 
@@ -57,7 +89,7 @@ export const DetailMiddle = styled.div`
 `
 
 export const ParaContext = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   font-family: Microsoft YaHei,SimHei,Verdana;
   word-wrap: break-word;
   line-height: 24px;

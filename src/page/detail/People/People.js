@@ -32,6 +32,7 @@ export default memo(function People(props) {
   const { 
     logoUrl,
     peopleName,
+    description,
     organizations,
     activities,
     journals,
@@ -45,7 +46,12 @@ export default memo(function People(props) {
     <Fragment>
       <DetailMiddle>
         <DetailInfo>
-          <img src={logoUrl} /><h1>{peopleName}</h1>
+          <img src={logoUrl} />
+          <div>
+            <h1>{peopleName}</h1>
+            <h2>{description}</h2>
+          </div>
+          {/* <h1>{peopleName}</h1> */}
         </DetailInfo>
         <Tabs defaultActiveKey="shengping">
           <TabPane tab="人物生平" key="shengping" >

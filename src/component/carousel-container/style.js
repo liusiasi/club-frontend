@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 export const CarouselContainer = styled.div`
-  width: 250px;
-  margin: 10px 25px 0;
+  width: 400px;
+  margin: 10px auto;
   border: 1px solid #e6e6e6;
   h3 {
     font-size: 18px;
@@ -17,26 +17,26 @@ export const CarouselContainer = styled.div`
   }
   .slick-slider slick-initialized {
     text-align: center;
-    width: 250px;
+    width: 400px;
     overflow: hidden;
     color:#000;
   }
   
   .slick-slider h3 {
     color: #555;
-    width: 250px;
+    width: 400px;
     line-height: 30px;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .slick-slider img, video,audio {
-    height:160px;
-    width: 250px;
+    height:320px;
+    width: 400px;
   }
   .slick-slider audio {
     height:80px;
-    width: 250px;
+    width: 400px;
   }
 
   .slick-prev:before, .slick-next:before {

@@ -9,4 +9,5 @@ export const ContainsNumber = styled.div`
   &.title{
     font-size: 40px;
   }
+  font-size: 20px;
 `

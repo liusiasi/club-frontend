@@ -10,24 +10,23 @@ export const HeaderWrapper = styled.div`
 `
 
 export const Nav = styled.div`
-  width: 90%;
+  width: 810px;
   height: 100%;
-  padding: 0 50px;
   box-sizing: border-box;
   margin: 0 auto;
 `
 
 export const NavItem = styled.div`
-  padding: 0 15px;
+  padding: 0 93px 0px 0px;
   line-height: 100px;
   color: #333;
   &.left {
     float: left;
-    font-size: 20px;
+    font-size: 22px;
   }
   &.right {
     float: right;
-    font-size: 15px;
+    font-size: 18px;
     color:#000;
   }
   cursor: pointer;
@@ -42,9 +41,9 @@ export const NavItem = styled.div`
 export const Logo = styled.div`
   float: left;
   display: block;
-  margin: 20px 25px;
+  margin: 20px 10px 0px 0px;
   height: 62px;
-  width: 151px;
+  width: 62px;
   background: url(${logo});
   background-size: contain;
   background-repeat:no-repeat;

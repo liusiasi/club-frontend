@@ -16,7 +16,7 @@ export const LevelThirdTitle = styled.div`
 
 
 export const ParaContext = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   font-family: Microsoft YaHei,SimHei,Verdana;
   word-wrap: break-word;
   color: #333;

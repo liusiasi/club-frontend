@@ -40,7 +40,7 @@ export default memo(function carouselContainer(props) {
         return data.map((item,index) => (
           <div key={index}>
             <a href={item.url} target="_blank" rel="noopener noreferrer">
-              <video src={`http://123.56.222.52/${item.url}`} controls="controls" controlslist="nodownload" disablePictureInPicture/>
+              <video src={item.url} controls="controls" controlslist="nodownload" disablePictureInPicture/>
             </a>
             <Link to={`/detail?id=${item.id}&theme=${title}`}
                 target="_blank"

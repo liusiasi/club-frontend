@@ -71,7 +71,7 @@ export const HistoricalindexDes = (data ,current,pageSize ) => {
       name: item.get('name'),
       logoUrl: item.get('image') === null ? '/shetuanGw/resource/icon.jpeg' : item.get('image'),
       description: (<div id='Text'><Text >{'所属社团: ' + (item.get('organizationName') ? item.get('organizationName') : '暂无')}</Text>
-        <br /><Text >{'史料日期: ' + (item.get('createTime') ? _mm.configTime(item.get('createTime'),item.get('createTimeType')) : '未知')}</Text>
+        <br /><Text >{'索引日期: ' + (item.get('createTime') ? _mm.configTime(item.get('createTime'),item.get('createTimeType')) : '未知')}</Text>
       </div>
       ),
 

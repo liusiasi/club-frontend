@@ -9,7 +9,7 @@ class TotalTheme extends Component {
     const {  totalNumber,theme } = this.props;
     return (
       <div>
-          <ContainsNumber className='title'>中国近现代科技社团</ContainsNumber>
+          <ContainsNumber className='title'>中国近现代科技社团查询系统</ContainsNumber>
           <ContainsNumber className='nums'>收录了{totalNumber}条{theme}信息</ContainsNumber>
       </div>
     )
