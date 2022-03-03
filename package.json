@@ -42,7 +42,7 @@
     "slick-carousel": "^1.8.1",
     "style-loader": "^1.0.0",
     "styled-components": "^4.3.2",
-    "urijs": "^1.19.2",
+    "urijs": "^1.19.9",
     "url-loader": "^2.1.0",
     "webpack-dev-server": "^3.8.0",
     "workbox-webpack-plugin": "^5.0.0"
