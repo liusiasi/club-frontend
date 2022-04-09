@@ -28,7 +28,7 @@
     "http-server": "^0.12.1",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "pre-commit": "^1.2.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
